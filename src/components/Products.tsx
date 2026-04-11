@@ -5,38 +5,56 @@ const products = [
   {
     icon: Wind,
     title: 'Промислові вентилятори та насоси',
-    description:
-      'Осьові, відцентрові та діагональні вентилятори. Насосне обладнання для водопостачання та водовідведення.',
+    items: [
+      'Осьові, відцентрові та діагональні вентилятори',
+      'Насосне обладнання для водопостачання',
+      'Системи водовідведення та перекачування рідин',
+    ],
   },
   {
     icon: Cable,
     title: 'Кабельно-провідникова продукція',
-    description:
-      "Силові кабелі, контрольні та сигнальні провідники, кабелі зв'язку та оптоволоконні лінії.",
+    items: [
+      'Силові кабелі різних перерізів та марок',
+      'Контрольні та сигнальні провідники',
+      "Кабелі зв'язку та оптоволоконні лінії",
+    ],
   },
   {
     icon: Zap,
     title: 'Трансформатори та вібратори',
-    description:
-      'Силові трансформатори, автотрансформатори та промислові вібратори для ущільнення бетону.',
+    items: [
+      'Силові та розподільчі трансформатори',
+      'Автотрансформатори та стабілізатори напруги',
+      'Промислові вібратори для ущільнення бетону',
+    ],
   },
   {
     icon: Activity,
     title: 'Частотні перетворювачі',
-    description:
-      'Перетворювачі частоти для регулювання швидкості електродвигунів у широкому діапазоні потужностей.',
+    items: [
+      'Регулювання швидкості електродвигунів',
+      'Потужності від 0.4 до 630 кВт',
+      'Моделі для складних умов експлуатації',
+    ],
   },
   {
     icon: ToggleLeft,
     title: 'Контактна апаратура',
-    description:
-      'Магнітні пускачі, контактори, реле, автоматичні вимикачі та розподільчі щити.',
+    items: [
+      'Магнітні пускачі та контактори',
+      'Реле захисту та автоматичні вимикачі',
+      'Розподільчі щити та шинопроводи',
+    ],
   },
   {
     icon: ShieldCheck,
     title: 'Станції управління та захисту',
-    description:
-      'Шафи та пости управління, станції захисту електродвигунів, щити автоматизації.',
+    items: [
+      'Шафи та пости оперативного управління',
+      'Станції захисту електродвигунів',
+      'Щити автоматизації та диспетчеризації',
+    ],
   },
 ]
 
@@ -64,7 +82,7 @@ export const Products = () => {
                 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', lineHeight: 1.1 }}>
               Наша продукція
             </h2>
-            <p className="font-sans text-slate-500 text-sm max-w-xs leading-relaxed">
+            <p className="font-sans text-slate-400 text-sm max-w-xs leading-relaxed">
               Повний спектр промислового електротехнічного обладнання для будь-яких потреб виробництва.
             </p>
           </div>
@@ -72,22 +90,35 @@ export const Products = () => {
 
         {/* Cards grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 rounded-xl overflow-hidden border border-white/5">
-          {products.map(({ icon: Icon, title, description }, i) => (
+          {products.map(({ icon: Icon, title, items }, i) => (
             <Reveal key={title} delay={i * 60}>
-              <div className="group h-full p-7 bg-[#080808] hover:bg-[#0f0f0f] transition-all duration-300 cursor-default">
-                {/* Red left accent */}
-                <div className="flex items-start gap-4 mb-4">
+              <div className="group h-full p-7 bg-[#080808] hover:bg-[#0f0f0f] hover:shadow-[inset_0_0_40px_rgba(206,0,0,0.04)] transition-all duration-300 cursor-default">
+
+                {/* Icon row with red accent bar */}
+                <div className="flex items-start gap-4 mb-5">
                   <div className="w-1 self-stretch rounded-full bg-[#ce0000]/30 group-hover:bg-[#ce0000] transition-colors duration-300 shrink-0" />
-                  <div className="w-11 h-11 rounded-lg bg-[#ce0000]/10 flex items-center justify-center group-hover:bg-[#ce0000]/20 transition-colors duration-300">
+                  <div className="w-11 h-11 rounded-lg bg-[#ce0000]/10 flex items-center justify-center group-hover:bg-[#ce0000]/20 transition-colors duration-300 shrink-0">
                     <Icon className="text-[#ce0000]" size={22} />
                   </div>
                 </div>
-                <h3 className="font-condensed font-bold text-white text-lg uppercase tracking-wide mb-2 leading-snug pl-5">
+
+                {/* Title */}
+                <h3 className="font-condensed font-bold text-white text-lg uppercase tracking-wide mb-4 leading-snug pl-5">
                   {title}
                 </h3>
-                <p className="font-sans text-slate-500 text-sm leading-relaxed pl-5 group-hover:text-slate-400 transition-colors duration-300">
-                  {description}
-                </p>
+
+                {/* Bullet list */}
+                <ul className="pl-5 space-y-2">
+                  {items.map((item) => (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <span className="mt-[7px] w-1 h-1 rounded-full bg-[#ce0000]/50 group-hover:bg-[#ce0000]/80 transition-colors duration-300 shrink-0" />
+                      <span className="font-sans text-sm text-slate-300 leading-relaxed group-hover:text-white/90 transition-colors duration-300">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
               </div>
             </Reveal>
           ))}
