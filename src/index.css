@@ -83,6 +83,9 @@ p { margin: 0; }
   background-size: 60px 60px;
 }
 
+/* ─── Slightly increase small body text (text-sm: 14px → 15px) ─── */
+.text-sm { font-size: 0.9375rem; }
+
 /* ─── Red accent line ─── */
 .red-line::before {
   content: '';
