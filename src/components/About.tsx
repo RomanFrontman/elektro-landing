@@ -1,4 +1,5 @@
-import { Shield, Award, CheckCircle, Handshake, CalendarCheck } from 'lucide-react'
+import { Shield, Award, CheckCircle, Handshake } from 'lucide-react'
+import { Reveal } from './Reveal'
 
 const values = [
   {
@@ -25,22 +26,29 @@ const values = [
 
 export const About = () => {
   return (
-    <section id="about" className="py-20 lg:py-28 bg-[#0a0a0a]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left: text */}
-          <div>
-            <div className="inline-flex items-center gap-2 bg-[#ce0000]/10 border border-[#ce0000]/20 text-[#ce0000] text-sm font-semibold px-4 py-2 rounded-full mb-6">
-              <CalendarCheck size={15} />
-              З 2008 року на ринку
+    <section id="about" className="relative py-24 lg:py-32 bg-[#080808] overflow-hidden">
+
+      {/* Watermark */}
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[22rem] leading-none text-white/[0.018] pointer-events-none select-none">
+        2008
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+
+          {/* ── Left: text ── */}
+          <Reveal direction="left">
+            <div className="red-line">
+              <p className="font-mono text-[11px] text-[#ce0000] uppercase tracking-[0.25em] mb-4">
+                Про компанію
+              </p>
+              <h2 className="font-condensed font-bold text-white uppercase tracking-wide mb-6"
+                  style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', lineHeight: 1.1 }}>
+                ДК Електро-Захід
+              </h2>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 leading-tight">
-              Про компанію<br />
-              <span className="text-[#ce0000]">ДК Електро-Захід</span>
-            </h2>
-
-            <div className="space-y-4 text-slate-400 leading-relaxed">
+            <div className="space-y-4 font-sans text-slate-400 leading-relaxed text-[15px]">
               <p>
                 ДК Електро-Захід — провідний постачальник промислового
                 електротехнічного обладнання в Україні. Заснована у 2008 році у Львові,
@@ -58,23 +66,36 @@ export const About = () => {
                 від невеликих підприємств до великих промислових комплексів.
               </p>
             </div>
-          </div>
 
-          {/* Right: values grid */}
-          <div className="grid grid-cols-2 gap-5">
-            {values.map(({ icon: Icon, title, description }) => (
-              <div
-                key={title}
-                className="group p-6 rounded-xl border border-white/8 bg-white/3 hover:bg-white/6 hover:border-[#ce0000]/30 hover:shadow-lg hover:shadow-[#ce0000]/5 transition-all duration-300"
-              >
-                <div className="w-11 h-11 rounded-lg bg-white/5 flex items-center justify-center mb-4 group-hover:bg-[#ce0000]/10 transition-colors duration-300">
-                  <Icon className="text-slate-400 group-hover:text-[#ce0000] transition-colors duration-300" size={22} />
-                </div>
-                <h3 className="font-semibold text-white mb-2">{title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed">{description}</p>
+            {/* Badge */}
+            <div className="mt-8 inline-flex items-center gap-3 px-5 py-3 border border-[#ce0000]/25 bg-[#ce0000]/5 rounded-lg">
+              <span className="font-display text-3xl text-[#ce0000] leading-none">2008</span>
+              <div>
+                <p className="font-mono text-[10px] text-slate-500 uppercase tracking-widest">На ринку з</p>
+                <p className="font-sans text-sm text-white font-medium">15+ років досвіду</p>
               </div>
+            </div>
+          </Reveal>
+
+          {/* ── Right: value cards ── */}
+          <div className="grid grid-cols-2 gap-4">
+            {values.map(({ icon: Icon, title, description }, i) => (
+              <Reveal key={title} delay={i * 80}>
+                <div className="group h-full p-5 rounded-xl border border-white/8 bg-white/[0.02] hover:bg-white/[0.05] hover:border-[#ce0000]/30 hover:shadow-lg hover:shadow-[#ce0000]/5 transition-all duration-300">
+                  <div className="w-10 h-10 rounded-lg bg-[#ce0000]/10 flex items-center justify-center mb-4 group-hover:bg-[#ce0000]/20 transition-colors duration-300">
+                    <Icon className="text-[#ce0000]" size={20} />
+                  </div>
+                  <h3 className="font-condensed font-bold text-white text-lg uppercase tracking-wide mb-2">
+                    {title}
+                  </h3>
+                  <p className="font-sans text-slate-500 text-sm leading-relaxed">
+                    {description}
+                  </p>
+                </div>
+              </Reveal>
             ))}
           </div>
+
         </div>
       </div>
     </section>

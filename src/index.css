@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/* ─── Custom font tokens ─── */
+@theme {
+  --font-display: 'Bebas Neue', ui-sans-serif;
+  --font-sans: 'Barlow', ui-sans-serif;
+  --font-condensed: 'Barlow Condensed', ui-sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace;
+}
+
+/* ─── Base ─── */
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 64px;
@@ -7,118 +16,79 @@ html {
 }
 
 body {
+  margin: 0;
   background-color: #000;
   color: #fff;
-}
-
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+  font-family: 'Barlow', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  text-rendering: optimizeLegibility;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
-body {
+/* ─── Reset headings (override old Vite boilerplate) ─── */
+h1, h2, h3, h4, h5, h6 {
   margin: 0;
+  font-weight: inherit;
+  font-size: inherit;
+  color: inherit;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+p { margin: 0; }
+
+/* ─── Hero entrance animations ─── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(36px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.8); }
+}
+
+.hero-badge    { animation: fadeIn    0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s  both; }
+.hero-title    { animation: fadeInUp  0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s  both; }
+.hero-sub      { animation: fadeInUp  0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both; }
+.hero-cta      { animation: fadeInUp  0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s  both; }
+.hero-stats    { animation: fadeIn    1s   cubic-bezier(0.16, 1, 0.3, 1) 0.65s both; }
+
+.pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+/* ─── Noise texture overlay ─── */
+.noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Diagonal grid pattern ─── */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ─── Red accent line ─── */
+.red-line::before {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 3px;
+  background: #ce0000;
+  margin-bottom: 1rem;
 }

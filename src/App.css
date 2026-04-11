@@ -1,4 +1,4 @@
-/* Reset #root from index.css for full-width landing page layout */
+/* Override legacy #root constraint from index.css boilerplate */
 #root {
   width: 100%;
   max-width: 100%;

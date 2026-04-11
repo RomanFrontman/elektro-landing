@@ -1,71 +1,94 @@
+import { Reveal } from './Reveal'
+
 const teamMembers = [
   {
-    initials: 'ДК',
-    name: 'Дмитро Коваленко',
+    initials: 'ІЧ',
+    name: 'Ігор Чаус',
     position: 'Директор',
-    bio: 'Засновник компанії, понад 20 років у галузі промислової електротехніки. Відповідає за стратегічний розвиток та ключові партнерства.',
-    color: 'bg-[#ce0000]',
+    bio: 'Засновник та керівник компанії. Понад 20 років у галузі промислової електротехніки. Визначає стратегічний напрямок розвитку та відповідає за ключові партнерства.',
+    accent: 'bg-[#ce0000]',
     textColor: 'text-white',
   },
   {
-    initials: 'ОМ',
-    name: 'Олена Мельник',
+    initials: 'ОЗ',
+    name: 'Олег Заліщук',
     position: 'Менеджер з продажу',
-    bio: 'Керує відділом продажу та роботою з клієнтами. Спеціалізується на підборі обладнання та формуванні комплексних пропозицій.',
-    color: 'bg-white',
+    bio: 'Керує відділом продажу та роботою з клієнтами. Спеціалізується на підборі обладнання та формуванні комплексних комерційних пропозицій.',
+    accent: 'bg-white',
     textColor: 'text-black',
   },
   {
-    initials: 'АШ',
-    name: 'Андрій Шевченко',
-    position: 'Технічний спеціаліст',
-    bio: "Інженер-електрик з досвідом роботи на промислових об'єктах. Консультує клієнтів щодо технічних характеристик обладнання.",
-    color: 'bg-zinc-700',
+    initials: 'ОЧ',
+    name: 'Олександра Чаус',
+    position: 'Маркетолог, СММ спеціаліст',
+    bio: 'Відповідає за маркетингову стратегію, просування компанії у соціальних мережах та створення контенту для залучення нових клієнтів.',
+    accent: 'bg-zinc-700',
     textColor: 'text-white',
   },
   {
-    initials: 'МБ',
-    name: 'Марія Бондаренко',
+    initials: 'АШ',
+    name: 'Андрій Шпак',
+    position: 'Технічний спеціаліст',
+    bio: "Інженер-електрик з досвідом роботи на промислових об'єктах. Консультує клієнтів щодо технічних характеристик та підбору обладнання.",
+    accent: 'bg-zinc-800',
+    textColor: 'text-white',
+  },
+  {
+    initials: 'АП',
+    name: 'Андрій Петеляк',
     position: 'Логістика та постачання',
     bio: 'Забезпечує своєчасне постачання та оптимізацію ланцюга поставок. Координує роботу з митними брокерами та перевізниками.',
-    color: 'bg-zinc-800',
+    accent: 'bg-zinc-900',
     textColor: 'text-white',
   },
 ]
 
 export const Team = () => {
   return (
-    <section id="team" className="py-20 lg:py-28 bg-[#0a0a0a]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <p className="text-[#ce0000] text-sm font-semibold uppercase tracking-widest mb-3">
-            Люди
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+    <section id="team" className="relative py-24 lg:py-32 bg-[#080808] overflow-hidden">
+
+      <div className="absolute right-0 bottom-0 font-display leading-none text-white/[0.015] pointer-events-none select-none"
+           style={{ fontSize: '20rem' }}>
+        05
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <Reveal className="mb-14">
+          <div className="red-line">
+            <p className="font-mono text-[11px] text-[#ce0000] uppercase tracking-[0.25em] mb-4">
+              Люди
+            </p>
+          </div>
+          <h2 className="font-condensed font-bold text-white uppercase tracking-wide"
+              style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', lineHeight: 1.1 }}>
             Наша команда
           </h2>
-          <p className="text-lg sm:text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed text-center">
-            Досвідчені фахівці, які щодня працюють задля задоволення потреб наших клієнтів.
-          </p>
-        </div>
+        </Reveal>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {teamMembers.map((member) => (
-            <div
-              key={member.name}
-              className="group bg-white/3 rounded-xl p-7 border border-white/8 hover:border-[#ce0000]/30 hover:bg-white/6 hover:shadow-xl hover:shadow-[#ce0000]/5 transition-all duration-300 text-center"
-            >
-              <div
-                className={`w-16 h-16 ${member.color} ${member.textColor} rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-5 group-hover:scale-105 transition-transform duration-300`}
-              >
-                {member.initials}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+          {teamMembers.map((m, i) => (
+            <Reveal key={m.name} delay={i * 70}>
+              <div className="group h-full p-6 rounded-xl border border-white/8 bg-white/[0.02] hover:bg-white/[0.05] hover:border-[#ce0000]/25 hover:shadow-xl hover:shadow-[#ce0000]/5 transition-all duration-300 flex flex-col">
+                <div
+                  className={`w-12 h-12 ${m.accent} ${m.textColor} rounded-xl flex items-center justify-center font-condensed font-bold text-lg mb-5 group-hover:scale-105 transition-transform duration-300 shrink-0`}
+                >
+                  {m.initials}
+                </div>
+                <h3 className="font-condensed font-bold text-white text-base uppercase tracking-wide mb-0.5 leading-tight">
+                  {m.name}
+                </h3>
+                <p className="font-mono text-[10px] text-[#ce0000] uppercase tracking-widest mb-4 leading-tight">
+                  {m.position}
+                </p>
+                <p className="font-sans text-slate-500 text-sm leading-relaxed flex-1">
+                  {m.bio}
+                </p>
               </div>
-              <h3 className="font-bold text-white mb-1">{member.name}</h3>
-              <p className="text-[#ce0000] text-sm font-medium mb-4">{member.position}</p>
-              <p className="text-slate-400 text-sm leading-relaxed">{member.bio}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
+
       </div>
     </section>
   )

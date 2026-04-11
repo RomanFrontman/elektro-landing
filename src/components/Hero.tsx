@@ -1,87 +1,106 @@
-import { Zap, ArrowRight } from 'lucide-react'
+import { Zap, ArrowRight, ChevronDown } from 'lucide-react'
 
 const stats = [
-  { value: '15+', label: 'років досвіду' },
-  { value: '500+', label: 'клієнтів' },
-  { value: '1000+', label: 'проєктів' },
+  { value: '15+',   label: 'РОКІВ ДОСВІДУ' },
+  { value: '500+',  label: 'КЛІЄНТІВ' },
+  { value: '1000+', label: 'ПРОЄКТІВ' },
 ]
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center bg-black overflow-hidden">
-      {/* Subtle grid pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(255,255,255,1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)
-          `,
-          backgroundSize: '60px 60px',
-        }}
-      />
+    <section className="relative min-h-screen flex flex-col bg-black overflow-hidden noise">
 
-      {/* Red glow accents */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-[#ce0000]/10 blur-3xl" />
-        <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-[#ce0000]/5 blur-3xl" />
-      </div>
+      {/* Grid pattern */}
+      <div className="absolute inset-0 grid-pattern opacity-100 pointer-events-none" />
 
-      {/* Large decorative lightning bolt */}
-      <div className="absolute inset-0 flex items-center justify-end pointer-events-none overflow-hidden">
+      {/* Red glow — top right */}
+      <div className="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full bg-[#ce0000]/8 blur-[140px] pointer-events-none" />
+
+      {/* Red glow — bottom left */}
+      <div className="absolute bottom-0 -left-40 w-96 h-96 rounded-full bg-[#ce0000]/5 blur-[100px] pointer-events-none" />
+
+      {/* Decorative bolt */}
+      <div className="absolute right-0 top-0 h-full flex items-center pointer-events-none select-none overflow-hidden">
         <Zap
-          size={520}
-          className="text-white/[0.025] translate-x-24"
-          strokeWidth={0.75}
+          size={680}
+          strokeWidth={0.6}
+          className="text-white opacity-[0.025] translate-x-[28%]"
         />
       </div>
 
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto pt-20">
+      {/* ── Main content ── */}
+      <div className="relative z-10 flex flex-col items-center justify-center flex-1 text-center px-4 sm:px-6 pt-28 pb-10">
+
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 bg-[#ce0000]/10 border border-[#ce0000]/25 text-[#ce0000] text-sm font-medium px-4 py-2 rounded-full mb-8">
-          <Zap size={13} fill="currentColor" />
-          Офіційний постачальник промислового обладнання
+        <div className="hero-badge inline-flex items-center gap-2.5 font-mono text-[11px] text-slate-500 uppercase tracking-[0.25em] mb-12">
+          <span className="pulse-dot w-1.5 h-1.5 rounded-full bg-[#ce0000] shrink-0" />
+          З 2008 року · Офіційний постачальник · Україна
         </div>
 
-        <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-white mb-6 leading-[1.15] tracking-tight">
-          Надійне промислове{' '}
-          <span className="text-[#ce0000]">обладнання</span>{' '}
-          для вашого бізнесу
+        {/* Headline */}
+        <h1 className="hero-title font-display leading-[0.88] tracking-tight mb-10">
+          <span className="block text-white"
+                style={{ fontSize: 'clamp(3.5rem, 11vw, 8.5rem)' }}>
+            НАДІЙНЕ
+          </span>
+          <span className="block text-[#ce0000]"
+                style={{ fontSize: 'clamp(3.5rem, 11vw, 8.5rem)' }}>
+            ПРОМИСЛОВЕ
+          </span>
+          <span className="block text-white"
+                style={{ fontSize: 'clamp(3.5rem, 11vw, 8.5rem)' }}>
+            ОБЛАДНАННЯ
+          </span>
         </h1>
 
-        <p className="text-lg sm:text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed text-center">
-          З 2008 року — комплексні рішення автоматизації та водопостачання
+        {/* Subheading */}
+        <p className="hero-sub font-sans text-base sm:text-lg text-slate-400 max-w-lg mx-auto leading-relaxed mb-14">
+          Комплексні рішення автоматизації та водопостачання
           для промислових підприємств України
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        {/* CTAs */}
+        <div className="hero-cta flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="#products"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#ce0000] hover:bg-red-700 text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-xl hover:shadow-[#ce0000]/30 hover:-translate-y-0.5"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#ce0000] hover:bg-red-700 text-white font-semibold text-sm rounded-lg transition-all duration-300 hover:shadow-xl hover:shadow-[#ce0000]/30 hover:-translate-y-0.5"
           >
             Переглянути продукцію
-            <ArrowRight size={18} />
+            <ArrowRight size={16} />
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center justify-center px-8 py-4 border border-white/25 hover:border-white/60 text-white font-semibold rounded-lg transition-all duration-300 hover:bg-white/5"
+            className="inline-flex items-center justify-center px-8 py-4 border border-white/20 hover:border-white/50 text-white font-semibold text-sm rounded-lg transition-all duration-300 hover:bg-white/5"
           >
             Зв'язатися з нами
           </a>
         </div>
       </div>
 
-      {/* Stats row */}
-      <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 mt-16 pb-12">
-        <div className="border-t border-white/10 pt-10 grid grid-cols-3 gap-6">
-          {stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-[#ce0000] mb-1">{stat.value}</div>
-              <div className="text-slate-500 text-sm sm:text-base">{stat.label}</div>
+      {/* ── Stats bar ── */}
+      <div className="hero-stats relative z-10 border-t border-white/8 bg-white/[0.02]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 grid grid-cols-3 divide-x divide-white/8">
+          {stats.map((s) => (
+            <div key={s.label} className="flex flex-col items-center gap-1 px-4">
+              <span className="font-display text-4xl sm:text-5xl text-[#ce0000] leading-none">
+                {s.value}
+              </span>
+              <span className="font-mono text-[10px] text-slate-600 tracking-[0.2em]">
+                {s.label}
+              </span>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Scroll hint */}
+      <a
+        href="#about"
+        className="absolute bottom-24 left-1/2 -translate-x-1/2 z-10 text-slate-700 hover:text-slate-500 transition-colors duration-300"
+        aria-label="Прокрутити вниз"
+      >
+        <ChevronDown size={20} className="animate-bounce" />
+      </a>
     </section>
   )
 }

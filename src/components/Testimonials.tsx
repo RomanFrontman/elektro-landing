@@ -1,4 +1,5 @@
-import { Star, Quote } from 'lucide-react'
+import { Star } from 'lucide-react'
+import { Reveal } from './Reveal'
 
 const testimonials = [
   {
@@ -26,51 +27,66 @@ const testimonials = [
 
 export const Testimonials = () => {
   return (
-    <section id="testimonials" className="py-20 lg:py-28 bg-[#0a0a0a]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <p className="text-[#ce0000] text-sm font-semibold uppercase tracking-widest mb-3">
-            Відгуки
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+    <section id="testimonials" className="relative py-24 lg:py-32 bg-[#080808] overflow-hidden">
+
+      {/* Large decorative quote marks */}
+      <div className="absolute left-4 top-12 font-display text-[18rem] leading-none text-white/[0.015] pointer-events-none select-none">
+        "
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Header */}
+        <Reveal className="mb-14">
+          <div className="red-line">
+            <p className="font-mono text-[11px] text-[#ce0000] uppercase tracking-[0.25em] mb-4">
+              Відгуки
+            </p>
+          </div>
+          <h2 className="font-condensed font-bold text-white uppercase tracking-wide"
+              style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', lineHeight: 1.1 }}>
             Відгуки клієнтів
           </h2>
-          <p className="text-lg sm:text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed text-center">
-            Нам довіряють сотні підприємств по всій Україні. Ось що вони кажуть про нашу роботу.
-          </p>
-        </div>
+        </Reveal>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {testimonials.map((t) => (
-            <div
-              key={t.name}
-              className="bg-white/3 border border-white/8 rounded-xl p-7 hover:bg-white/6 hover:border-[#ce0000]/25 hover:shadow-xl hover:shadow-[#ce0000]/5 transition-all duration-300"
-            >
-              <div className="flex items-start justify-between mb-5">
-                <div className="flex gap-1">
-                  {Array.from({ length: t.stars }).map((_, i) => (
-                    <Star key={i} size={16} className="text-[#ce0000] fill-[#ce0000]" />
+        {/* Cards */}
+        <div className="grid md:grid-cols-3 gap-5">
+          {testimonials.map((t, i) => (
+            <Reveal key={t.name} delay={i * 80}>
+              <div className="group h-full flex flex-col p-7 rounded-xl border border-white/8 bg-white/[0.02] hover:bg-white/[0.04] hover:border-[#ce0000]/20 hover:shadow-xl hover:shadow-[#ce0000]/5 transition-all duration-300">
+
+                {/* Stars */}
+                <div className="flex gap-0.5 mb-5">
+                  {Array.from({ length: t.stars }).map((_, j) => (
+                    <Star key={j} size={14} className="text-[#ce0000] fill-[#ce0000]" />
                   ))}
                 </div>
-                <Quote className="text-white/15" size={28} />
-              </div>
 
-              <p className="text-slate-300 text-sm leading-relaxed mb-6 italic">
-                "{t.text}"
-              </p>
+                {/* Quote */}
+                <p className="font-sans text-slate-400 text-sm leading-relaxed flex-1 mb-6 italic">
+                  "{t.text}"
+                </p>
 
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-zinc-800 border border-white/10 flex items-center justify-center text-white text-xs font-bold shrink-0">
-                  {t.initials}
+                {/* Author */}
+                <div className="flex items-center gap-3 pt-5 border-t border-white/8">
+                  <div className="w-9 h-9 rounded-lg bg-zinc-800 border border-white/8 flex items-center justify-center font-condensed font-bold text-white text-xs shrink-0">
+                    {t.initials}
+                  </div>
+                  <div>
+                    <p className="font-condensed font-bold text-white text-sm uppercase tracking-wide">
+                      {t.name}
+                    </p>
+                    <p className="font-mono text-[10px] text-slate-600 mt-0.5">
+                      {t.company}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-white font-semibold text-sm">{t.name}</div>
-                  <div className="text-slate-500 text-xs mt-0.5">{t.company}</div>
-                </div>
+
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
+
       </div>
     </section>
   )
