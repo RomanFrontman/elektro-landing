@@ -63,7 +63,7 @@ export const Testimonials = () => {
                 </div>
 
                 {/* Quote */}
-                <p className="font-sans text-slate-400 text-sm leading-relaxed flex-1 mb-6 italic">
+                <p className="font-sans text-slate-200 text-sm leading-relaxed flex-1 mb-6 italic">
                   "{t.text}"
                 </p>
 

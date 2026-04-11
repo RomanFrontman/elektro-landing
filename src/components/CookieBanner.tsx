@@ -101,7 +101,7 @@ const CategoryRow = ({
           <button
             type="button"
             onClick={() => setOpen(o => !o)}
-            className="text-slate-600 hover:text-slate-400 transition-colors duration-200"
+            className="text-slate-600 hover:text-slate-200 transition-colors duration-200"
             aria-label="Деталі"
           >
             {open ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
@@ -188,7 +188,7 @@ export const CookieBanner = () => {
                     <p className="font-condensed font-bold text-white text-base uppercase tracking-wide mb-1">
                       Ми використовуємо файли Cookie
                     </p>
-                    <p className="font-sans text-slate-400 text-sm leading-relaxed">
+                    <p className="font-sans text-slate-200 text-sm leading-relaxed">
                       Цей сайт використовує cookies для покращення вашого досвіду та аналізу трафіку.{' '}
                       <Link
                         to="/cookie-policy"
@@ -225,7 +225,7 @@ export const CookieBanner = () => {
                 {/* Close */}
                 <button
                   onClick={declineAll}
-                  className="absolute top-4 right-4 text-slate-600 hover:text-slate-400 transition-colors duration-200 lg:static lg:shrink-0"
+                  className="absolute top-4 right-4 text-slate-600 hover:text-slate-200 transition-colors duration-200 lg:static lg:shrink-0"
                   aria-label="Закрити"
                 >
                   <X size={18} />
@@ -279,7 +279,7 @@ export const CookieBanner = () => {
                 </div>
                 <button
                   onClick={saveCustom}
-                  className="text-slate-600 hover:text-slate-400 transition-colors duration-200 p-1"
+                  className="text-slate-600 hover:text-slate-200 transition-colors duration-200 p-1"
                   aria-label="Закрити"
                 >
                   <X size={18} />

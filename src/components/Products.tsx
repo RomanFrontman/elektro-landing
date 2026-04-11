@@ -82,7 +82,7 @@ export const Products = () => {
                 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', lineHeight: 1.1 }}>
               Наша продукція
             </h2>
-            <p className="font-sans text-slate-400 text-sm max-w-xs leading-relaxed">
+            <p className="font-sans text-slate-200 text-sm max-w-xs leading-relaxed">
               Повний спектр промислового електротехнічного обладнання для будь-яких потреб виробництва.
             </p>
           </div>

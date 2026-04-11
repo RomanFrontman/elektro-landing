@@ -61,7 +61,7 @@ export const Contact = () => {
 
           {/* ── Left: contact info ── */}
           <Reveal direction="left">
-            <p className="font-sans text-slate-400 text-sm leading-relaxed mb-8 max-w-sm">
+            <p className="font-sans text-slate-200 text-sm leading-relaxed mb-8 max-w-sm">
               Маєте запитання або хочете отримати комерційну пропозицію?
               Зв'яжіться з нами зручним способом.
             </p>

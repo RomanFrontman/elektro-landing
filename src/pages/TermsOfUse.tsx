@@ -6,7 +6,7 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
     <h2 className="font-condensed font-bold text-white text-2xl uppercase tracking-wide mb-4 pb-3 border-b border-white/8">
       {title}
     </h2>
-    <div className="space-y-3 font-sans text-slate-400 text-sm leading-relaxed">
+    <div className="space-y-3 font-sans text-slate-200 text-sm leading-relaxed">
       {children}
     </div>
   </div>

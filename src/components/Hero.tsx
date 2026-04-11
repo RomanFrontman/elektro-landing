@@ -38,7 +38,7 @@ export const Hero = () => {
         </div>
 
         {/* Headline */}
-        <h1 className="hero-title font-display leading-[0.88] tracking-tight mb-10">
+        <h1 className="hero-title font-display leading-[0.88] tracking-tight pb-4">
           <span className="block text-white"
                 style={{ fontSize: 'clamp(3.5rem, 11vw, 8.5rem)' }}>
             НАДІЙНЕ
@@ -54,7 +54,7 @@ export const Hero = () => {
         </h1>
 
         {/* Subheading */}
-        <p className="hero-sub font-sans text-base sm:text-lg text-slate-400 max-w-lg mx-auto leading-relaxed pb-4">
+        <p className="hero-sub font-sans text-base sm:text-lg text-slate-200 max-w-lg mx-auto leading-relaxed pb-4">
           Комплексні рішення автоматизації та водопостачання
           для промислових підприємств України
         </p>

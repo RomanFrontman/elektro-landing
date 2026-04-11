@@ -6,7 +6,7 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
     <h2 className="font-condensed font-bold text-white text-2xl uppercase tracking-wide mb-4 pb-3 border-b border-white/8">
       {title}
     </h2>
-    <div className="space-y-3 font-sans text-slate-400 text-sm leading-relaxed">
+    <div className="space-y-3 font-sans text-slate-200 text-sm leading-relaxed">
       {children}
     </div>
   </div>
@@ -127,7 +127,7 @@ export const CookiePolicy = () => {
                       <tr key={c.name}
                           className={`border-b border-white/5 ${i % 2 === 0 ? 'bg-transparent' : 'bg-white/[0.01]'}`}>
                         <td className="px-4 py-3 font-mono text-[#ce0000] whitespace-nowrap">{c.name}</td>
-                        <td className="px-4 py-3 text-slate-400">{c.purpose}</td>
+                        <td className="px-4 py-3 text-slate-200">{c.purpose}</td>
                         <td className="px-4 py-3 text-slate-500 whitespace-nowrap">{c.duration}</td>
                         <td className="px-4 py-3 text-slate-500 whitespace-nowrap">{c.provider}</td>
                       </tr>

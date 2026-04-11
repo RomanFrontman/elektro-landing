@@ -48,7 +48,7 @@ export const About = () => {
               </h2>
             </div>
 
-            <div className="space-y-4 font-sans text-slate-400 leading-relaxed text-[15px]">
+            <div className="space-y-4 font-sans text-slate-200 leading-relaxed text-[15px]">
               <p>
                 ДК Електро-Захід — провідний постачальник промислового
                 електротехнічного обладнання в Україні. Заснована у 2008 році у Львові,

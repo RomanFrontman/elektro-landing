@@ -47,7 +47,7 @@ export const Header = () => {
               <a
                 key={link.href}
                 href={link.href}
-                className="font-sans text-sm text-slate-400 hover:text-white transition-colors duration-300 relative group"
+                className="font-sans text-sm text-slate-200 hover:text-white transition-colors duration-300 relative group"
               >
                 {link.label}
                 <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[#ce0000] transition-all duration-300 group-hover:w-full" />
@@ -65,7 +65,7 @@ export const Header = () => {
 
           {/* Burger */}
           <button
-            className="md:hidden text-slate-400 hover:text-white transition-colors duration-300 p-1"
+            className="md:hidden text-slate-200 hover:text-white transition-colors duration-300 p-1"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Відкрити меню"
           >
