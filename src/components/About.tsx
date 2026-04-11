@@ -42,13 +42,13 @@ export const About = () => {
               <p className="font-mono text-[11px] text-[#ce0000] uppercase tracking-[0.25em] mb-4">
                 Про компанію
               </p>
-              <h2 className="font-condensed font-bold text-white uppercase tracking-wide mb-6"
+              <h2 className="font-condensed font-bold text-white uppercase tracking-wide mb-6 font-semibold"
                   style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', lineHeight: 1.1 }}>
                 ДК Електро-Захід
               </h2>
             </div>
 
-            <div className="space-y-4 font-sans text-slate-200 leading-relaxed text-[15px]">
+            <div className="space-y-4 font-sans text-slate-200 leading-relaxed text-[15px] font-semibold">
               <p>
                 ДК Електро-Захід — провідний постачальник промислового
                 електротехнічного обладнання в Україні. Заснована у 2008 році у Львові,

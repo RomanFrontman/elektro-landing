@@ -3,7 +3,6 @@
 /* ─── Custom font tokens ─── */
 @theme {
   --font-display: 'Inter', ui-sans-serif;
-  --font-sans: 'Barlow', ui-sans-serif;
   --font-condensed: 'Inter', ui-sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace;
 }
@@ -28,7 +27,6 @@ body {
 /* ─── Reset headings (override old Vite boilerplate) ─── */
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
-  font-weight: inherit;
   font-size: inherit;
   color: inherit;
 }

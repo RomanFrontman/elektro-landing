@@ -38,16 +38,16 @@ export const Hero = () => {
         </div>
 
         {/* Headline */}
-        <h1 className="hero-title font-display leading-[0.88] tracking-tight pb-4">
-          <span className="block text-white"
+        <h1 className="hero-title font-display leading-[0.88] tracking-tight pb-4 ">
+          <span className="block text-white font-semibold"
                 style={{ fontSize: 'clamp(3.5rem, 11vw, 8.5rem)' }}>
             НАДІЙНЕ
           </span>
-          <span className="block text-[#ce0000]"
+          <span className="block text-[#ce0000] font-semibold"
                 style={{ fontSize: 'clamp(3.5rem, 11vw, 8.5rem)' }}>
             ПРОМИСЛОВЕ
           </span>
-          <span className="block text-white"
+          <span className="block text-white font-semibold"
                 style={{ fontSize: 'clamp(3.5rem, 11vw, 8.5rem)' }}>
             ОБЛАДНАННЯ
           </span>
