@@ -54,7 +54,7 @@ export const Hero = () => {
         </h1>
 
         {/* Subheading */}
-        <p className="hero-sub font-sans text-base sm:text-lg text-slate-400 max-w-lg mx-auto leading-relaxed mb-14">
+        <p className="hero-sub font-sans text-base sm:text-lg text-slate-400 max-w-lg mx-auto leading-relaxed mb-20">
           Комплексні рішення автоматизації та водопостачання
           для промислових підприємств України
         </p>
