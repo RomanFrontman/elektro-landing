@@ -2,9 +2,9 @@
 
 /* ─── Custom font tokens ─── */
 @theme {
-  --font-display: 'Bebas Neue', ui-sans-serif;
+  --font-display: 'Inter', ui-sans-serif;
   --font-sans: 'Barlow', ui-sans-serif;
-  --font-condensed: 'Barlow Condensed', ui-sans-serif;
+  --font-condensed: 'Inter', ui-sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace;
 }
 
