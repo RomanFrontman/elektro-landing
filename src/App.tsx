@@ -10,6 +10,7 @@ import { Products } from './components/Products'
 import { Team } from './components/Team'
 import { Prices } from './components/Prices'
 import { Calculator } from './components/Calculator'
+import { DiscountCTA } from './components/DiscountCTA'
 import { Testimonials } from './components/Testimonials'
 import { Contact } from './components/Contact'
 import { PrivacyPolicy } from './pages/PrivacyPolicy'
@@ -39,6 +40,7 @@ const HomePage = () => (
     <Team />
     <Prices />
     <Calculator />
+    <DiscountCTA />
     <Testimonials />
     <Contact />
   </main>
