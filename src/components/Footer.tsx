@@ -6,6 +6,7 @@ const navLinks = [
   { to: '/#products',     label: 'Продукція' },
   { to: '/#team',         label: 'Команда' },
   { to: '/#prices',       label: 'Ціни' },
+  { to: '/#calculator',   label: 'Калькулятор' },
   { to: '/#testimonials', label: 'Відгуки' },
   { to: '/#contact',      label: 'Контакти' },
 ]
