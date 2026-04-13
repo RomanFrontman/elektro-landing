@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 
 const navLinks = [
-  { href: '#about',        label: 'Про нас' },
-  { href: '#products',     label: 'Продукція' },
-  { href: '#team',         label: 'Команда' },
-  { href: '#prices',       label: 'Ціни' },
-  { href: '#testimonials', label: 'Відгуки' },
-  { href: '#contact',      label: 'Контакти' },
+  { to: '/#about',        label: 'Про нас' },
+  { to: '/#products',     label: 'Продукція' },
+  { to: '/#team',         label: 'Команда' },
+  { to: '/#prices',       label: 'Ціни' },
+  { to: '/#testimonials', label: 'Відгуки' },
+  { to: '/#contact',      label: 'Контакти' },
 ]
 
 export const Header = () => {
@@ -44,24 +45,24 @@ export const Header = () => {
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
+              <Link
+                key={link.to}
+                to={link.to}
                 className="font-sans text-sm text-slate-200 hover:text-white transition-colors duration-300 relative group"
               >
                 {link.label}
                 <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[#ce0000] transition-all duration-300 group-hover:w-full" />
-              </a>
+              </Link>
             ))}
           </nav>
 
           {/* Desktop CTA */}
-          <a
-            href="#contact"
+          <Link
+            to="/#contact"
             className="hidden md:inline-flex items-center px-5 py-2.5 bg-[#ce0000] hover:bg-red-700 text-white text-sm font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#ce0000]/30 hover:-translate-y-px"
           >
             Зв'язатися
-          </a>
+          </Link>
 
           {/* Burger */}
           <button
@@ -79,23 +80,23 @@ export const Header = () => {
         <div className="md:hidden bg-black/98 border-t border-white/10 px-4 py-6">
           <nav className="flex flex-col gap-1">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
+              <Link
+                key={link.to}
+                to={link.to}
                 className="font-sans text-slate-300 hover:text-white font-medium py-2.5 px-3 rounded-lg hover:bg-white/5 transition-all duration-200"
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
-          <a
-            href="#contact"
+          <Link
+            to="/#contact"
             className="mt-4 flex items-center justify-center px-5 py-3 bg-[#ce0000] hover:bg-red-700 text-white font-semibold rounded-lg transition-colors duration-300"
             onClick={() => setMenuOpen(false)}
           >
             Зв'язатися
-          </a>
+          </Link>
         </div>
       )}
     </header>

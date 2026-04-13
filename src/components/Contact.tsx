@@ -61,7 +61,7 @@ export const Contact = () => {
 
           {/* ── Left: contact info ── */}
           <Reveal direction="left">
-            <p className="font-sans text-slate-200 text-sm leading-relaxed mb-8 max-w-sm">
+            <p className="font-sans text-slate-200 text-sm leading-relaxed pb-4 max-w-sm">
               Маєте запитання або хочете отримати комерційну пропозицію?
               Зв'яжіться з нами зручним способом.
             </p>
@@ -129,7 +129,7 @@ export const Contact = () => {
               <p className="font-condensed font-bold text-white uppercase tracking-wide text-base mb-1">
                 Потрібна консультація?
               </p>
-              <p className="font-sans text-slate-500 text-sm mb-4">
+              <p className="font-sans text-slate-500 text-sm pb-2">
                 Наші спеціалісти готові відповісти на запитання щодо підбору обладнання.
               </p>
               <a href="tel:+380322454753"

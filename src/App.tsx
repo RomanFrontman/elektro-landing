@@ -1,4 +1,5 @@
-import { Routes, Route } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import './App.css'
 import { Header } from './components/Header'
 import { Footer } from './components/Footer'
@@ -13,6 +14,21 @@ import { Contact } from './components/Contact'
 import { PrivacyPolicy } from './pages/PrivacyPolicy'
 import { TermsOfUse } from './pages/TermsOfUse'
 import { CookiePolicy } from './pages/CookiePolicy'
+
+const ScrollToHash = () => {
+  const { hash, pathname } = useLocation()
+  useEffect(() => {
+    if (hash) {
+      const el = document.querySelector(hash)
+      if (el) {
+        setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 50)
+      }
+    } else if (pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }, [hash, pathname])
+  return null
+}
 
 const HomePage = () => (
   <main>
@@ -29,6 +45,7 @@ const HomePage = () => (
 function App() {
   return (
     <>
+      <ScrollToHash />
       <Header />
       <Routes>
         <Route path="/"               element={<HomePage />} />

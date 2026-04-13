@@ -2,12 +2,12 @@ import { Mail, Phone, MapPin } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const navLinks = [
-  { href: '#about',        label: 'Про нас' },
-  { href: '#products',     label: 'Продукція' },
-  { href: '#team',         label: 'Команда' },
-  { href: '#prices',       label: 'Ціни' },
-  { href: '#testimonials', label: 'Відгуки' },
-  { href: '#contact',      label: 'Контакти' },
+  { to: '/#about',        label: 'Про нас' },
+  { to: '/#products',     label: 'Продукція' },
+  { to: '/#team',         label: 'Команда' },
+  { to: '/#prices',       label: 'Ціни' },
+  { to: '/#testimonials', label: 'Відгуки' },
+  { to: '/#contact',      label: 'Контакти' },
 ]
 
 const legalLinks = [
@@ -48,12 +48,12 @@ export const Footer = () => {
           <p className="font-mono text-[11px] text-slate-600 uppercase tracking-widest hidden sm:block">
             Промислове електротехнічне обладнання · з 2008 року
           </p>
-          <a
-            href="#contact"
+          <Link
+            to="/#contact"
             className="inline-flex items-center gap-2 px-6 py-3 bg-[#ce0000] hover:bg-red-700 text-white font-semibold text-sm rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-[#ce0000]/30 shrink-0"
           >
             Отримати пропозицію
-          </a>
+          </Link>
         </div>
 
         {/* Middle 3-col */}
@@ -64,10 +64,10 @@ export const Footer = () => {
             <p className="font-mono text-[10px] text-slate-600 uppercase tracking-widest mb-5">Навігація</p>
             <nav className="grid grid-cols-2 gap-x-4 gap-y-2.5">
               {navLinks.map((link) => (
-                <a key={link.href} href={link.href}
+                <Link key={link.to} to={link.to}
                    className="font-sans text-slate-500 hover:text-white text-sm transition-colors duration-300">
                   {link.label}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>
@@ -120,10 +120,10 @@ export const Footer = () => {
                  className="w-9 h-9 rounded-lg bg-white/5 border border-white/8 hover:border-[#ce0000]/30 hover:bg-[#ce0000]/10 flex items-center justify-center text-slate-600 hover:text-[#ce0000] transition-all duration-300">
                 <Phone size={15} />
               </a>
-              <a href="#contact" aria-label="Адреса"
+              <Link to="/#contact" aria-label="Адреса"
                  className="w-9 h-9 rounded-lg bg-white/5 border border-white/8 hover:border-[#ce0000]/30 hover:bg-[#ce0000]/10 flex items-center justify-center text-slate-600 hover:text-[#ce0000] transition-all duration-300">
                 <MapPin size={15} />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
