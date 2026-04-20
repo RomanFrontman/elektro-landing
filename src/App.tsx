@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import './App.css'
+import { ThemeProvider } from './context/ThemeContext'
 import { Header } from './components/Header'
 import { Footer } from './components/Footer'
 import { CookieBanner } from './components/CookieBanner'
@@ -48,7 +49,7 @@ const HomePage = () => (
 
 function App() {
   return (
-    <>
+    <ThemeProvider>
       <ScrollToHash />
       <Header />
       <Routes>
@@ -59,7 +60,7 @@ function App() {
       </Routes>
       <Footer />
       <CookieBanner />
-    </>
+    </ThemeProvider>
   )
 }
 

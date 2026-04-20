@@ -1,5 +1,16 @@
 import { Wind, Cable, Zap, Activity, ToggleLeft, ShieldCheck } from 'lucide-react'
 import { Reveal } from './Reveal'
+import fanImg        from '../assets/ventilyator-vc-4-75-25-vr-89-75-vr-88-72-vr-80-75-vr-86-77-037kvt-3000-obkhv.webp'
+import converterImg  from '../assets/chastotnic.300x300.png'
+import reducerImg    from '../assets/reduktor_motorreduktor.300x300.png'
+import motorImg      from '../assets/ms-56-3-4-elektrodvigun-b3-012-kvt-1360-obkhv.jpg'
+
+const showcase = [
+  { img: fanImg,       name: 'Промислові вентилятори', sub: 'від 0.37 кВт · 3000 об/хв' },
+  { img: converterImg, name: 'Частотні перетворювачі', sub: 'від 0.4 до 630 кВт'         },
+  { img: reducerImg,   name: 'Мотор-редуктори',        sub: 'широкий асортимент'          },
+  { img: motorImg,     name: 'Електродвигуни',          sub: 'від 0.09 кВт · серія MS'    },
+]
 
 const products = [
   {
@@ -71,7 +82,7 @@ export const Products = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section header */}
-        <Reveal className="mb-14">
+        <Reveal className="mb-10">
           <div className="red-line">
             <p className="font-mono text-[11px] text-[#ce0000] uppercase tracking-[0.25em] mb-4">
               Асортимент
@@ -88,7 +99,51 @@ export const Products = () => {
           </div>
         </Reveal>
 
-        {/* Cards grid */}
+        {/* ── Product photo showcase ── */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-14">
+          {showcase.map(({ img, name, sub }, i) => (
+            <Reveal key={name} delay={i * 60}>
+              <div
+                data-theme-locked
+                className="group relative overflow-hidden rounded-xl aspect-square cursor-default"
+                style={{ background: '#0d0d0d' }}
+              >
+                {/* Red corner accent */}
+                <div className="absolute top-0 left-0 w-8 h-8 z-20 pointer-events-none">
+                  <div className="absolute top-0 left-0 w-full h-[2px] bg-[#ce0000]" />
+                  <div className="absolute top-0 left-0 h-full w-[2px] bg-[#ce0000]" />
+                </div>
+
+                {/* Product image */}
+                <img
+                  src={img}
+                  alt={name}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-contain p-5 transition-transform duration-500 group-hover:scale-105"
+                />
+
+                {/* Bottom gradient overlay */}
+                <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/90 via-black/60 to-transparent z-10" />
+
+                {/* Text */}
+                <div className="absolute inset-x-0 bottom-0 z-20 p-4">
+                  <p className="font-condensed font-bold text-white text-sm uppercase tracking-wide leading-tight">
+                    {name}
+                  </p>
+                  <p className="font-mono text-[10px] text-slate-500 mt-0.5 tracking-wider">
+                    {sub}
+                  </p>
+                </div>
+
+                {/* Hover red glow */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10"
+                     style={{ boxShadow: 'inset 0 0 40px rgba(206,0,0,0.08)' }} />
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        {/* Category cards grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 rounded-xl overflow-hidden border border-white/5">
           {products.map(({ icon: Icon, title, items }, i) => (
             <Reveal key={title} delay={i * 60}>

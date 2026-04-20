@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* ─── Class-based dark mode for Tailwind v4 ─── */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ─── Custom font tokens ─── */
 @theme {
   --font-display: 'Inter', ui-sans-serif;
@@ -170,3 +173,82 @@ p { margin: 0; }
   background: #ce0000;
   margin-bottom: 1rem;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   Light mode overrides — applied when html does NOT have .dark
+   ═══════════════════════════════════════════════════════════════ */
+
+html:not(.dark) {
+  background-color: #f8fafc;
+  color-scheme: light;
+}
+
+html:not(.dark) body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+/* ── Section / footer backgrounds ── */
+html:not(.dark) .bg-black         { background-color: #f8fafc; }
+html:not(.dark) .bg-\[\#080808\]  { background-color: #f1f5f9; }
+html:not(.dark) .bg-black\/95     { background-color: rgba(248,250,252,0.97); }
+html:not(.dark) .bg-black\/98     { background-color: rgba(248,250,252,0.99); }
+
+/* ── Card / overlay backgrounds ── */
+html:not(.dark) .bg-white\/\[0\.02\]  { background-color: rgba(255,255,255,0.85); }
+html:not(.dark) .bg-white\/\[0\.04\]  { background-color: rgba(255,255,255,0.95); }
+html:not(.dark) .bg-white\/\[0\.05\]  { background-color: rgba(15,23,42,0.04);   }
+html:not(.dark) .bg-white\/5          { background-color: rgba(15,23,42,0.05);   }
+
+/* ── Popular pricing card — light red tint on light theme ── */
+html:not(.dark) .bg-\[\#0c0000\]      { background-color: #fff5f5; }
+
+/* ── Typography ── */
+html:not(.dark) .text-white    { color: #0f172a; }
+html:not(.dark) .text-slate-200 { color: #334155; }
+html:not(.dark) .text-slate-300 { color: #475569; }
+html:not(.dark) .text-slate-500 { color: #64748b; }
+html:not(.dark) .text-slate-600 { color: #475569; }
+html:not(.dark) .text-slate-700 { color: #6b7280; }
+
+/* Restore white text on red CTA elements (same element or direct child) */
+html:not(.dark) .bg-\[\#ce0000\].text-white,
+html:not(.dark) .bg-\[\#ce0000\] > .text-white { color: #fff; }
+
+/* Hover text */
+html:not(.dark) .hover\:text-white:hover { color: #0f172a; }
+
+/* ── Borders ── */
+html:not(.dark) .border-white\/8   { border-color: rgba(15,23,42,0.10); }
+html:not(.dark) .border-white\/10  { border-color: rgba(15,23,42,0.12); }
+
+/* ── Shadow softening ── */
+html:not(.dark) .shadow-black\/50 { --tw-shadow-color: rgba(15,23,42,0.10); }
+
+/* ── Grid pattern — dark lines on light bg ── */
+html:not(.dark) .grid-pattern {
+  background-image:
+    linear-gradient(rgba(15,23,42,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15,23,42,0.05) 1px, transparent 1px);
+}
+
+/* ── Watermark / decorative text ── */
+html:not(.dark) .text-white\/\[0\.015\] { color: rgba(15,23,42,0.035); }
+html:not(.dark) .text-white\/\[0\.018\] { color: rgba(15,23,42,0.035); }
+html:not(.dark) .text-white\/\[0\.025\] { color: rgba(15,23,42,0.04);  }
+
+/* ── Product image cards — white in light mode, dark in dark mode ── */
+html:not(.dark) [data-theme-locked]                   { background: #ffffff !important; }
+html:not(.dark) [data-theme-locked] .text-white       { color: #0f172a; }
+html:not(.dark) [data-theme-locked] .text-slate-500   { color: #64748b; }
+html:not(.dark) [data-theme-locked] .bg-gradient-to-t {
+  background-image: linear-gradient(to top, rgba(248,250,252,0.98) 0%, rgba(248,250,252,0.65) 55%, transparent 100%);
+}
+
+/* ── DiscountCTA — always dark, restore all text to original values ── */
+html:not(.dark) #discount .text-white         { color: #fff;    }
+html:not(.dark) #discount .text-slate-200     { color: #e2e8f0; }
+html:not(.dark) #discount .text-slate-300     { color: #cbd5e1; }
+html:not(.dark) #discount .text-slate-500     { color: #64748b; }
+html:not(.dark) #discount .text-slate-600     { color: #475569; }
+html:not(.dark) #discount .hover\:text-white:hover { color: #fff; }

@@ -1,5 +1,6 @@
 import { Mail, Phone, MapPin } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { useTheme } from '../context/ThemeContext'
 
 const navLinks = [
   { to: '/#about',        label: 'Про нас' },
@@ -24,7 +25,9 @@ const phones = [
 ]
 
 export const Footer = () => {
+  const { theme } = useTheme()
   const year = new Date().getFullYear()
+  const logoFilter = theme === 'dark' ? 'brightness(0) invert(1)' : 'none'
 
   return (
     <footer className="relative bg-[#080808] border-t border-white/8 overflow-hidden">
@@ -42,8 +45,8 @@ export const Footer = () => {
             <img
               src="/logo.png"
               alt="ДК Електро-Захід"
-              className="h-8 w-auto"
-              style={{ filter: 'brightness(0) invert(1)' }}
+              className="h-8 w-auto transition-all duration-300"
+              style={{ filter: logoFilter }}
             />
           </a>
           <p className="font-mono text-[11px] text-slate-600 uppercase tracking-widest hidden sm:block">

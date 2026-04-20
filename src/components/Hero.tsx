@@ -1,5 +1,6 @@
 import { Zap, ArrowRight, ChevronDown } from 'lucide-react'
 
+
 const stats = [
   { value: '15+',   label: 'РОКІВ ДОСВІДУ' },
   { value: '500+',  label: 'КЛІЄНТІВ' },
@@ -28,6 +29,8 @@ export const Hero = () => {
         />
       </div>
 
+
+
       {/* ── Main content ── */}
       <div className="relative z-10 flex flex-col items-center justify-center flex-1 text-center px-4 sm:px-6 pt-28 pb-10">
 
@@ -38,7 +41,7 @@ export const Hero = () => {
         </div>
 
         {/* Headline */}
-        <h1 className="hero-title font-display leading-[0.88] tracking-tight pb-4 ">
+        <h1 className="hero-title font-display leading-[0.88] tracking-tight pb-4">
           <span className="block text-white font-semibold"
                 style={{ fontSize: 'clamp(3rem, 11vw, 8.5rem)' }}>
             НАДІЙНЕ
