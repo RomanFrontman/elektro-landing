@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div className="mb-10">
-    <h2 className="font-condensed font-bold text-white text-2xl uppercase tracking-wide mb-4 pb-3 border-b border-white/8">
+    <h2 className="font-condensed font-bold text-primary text-2xl uppercase tracking-wide mb-4 pb-3 border-b border-theme">
       {title}
     </h2>
-    <div className="space-y-3 font-sans text-slate-200 text-sm leading-relaxed">
+    <div className="space-y-3 font-sans text-secondary text-sm leading-relaxed">
       {children}
     </div>
   </div>
@@ -16,17 +16,17 @@ export const TermsOfUse = () => {
   useEffect(() => { window.scrollTo(0, 0) }, [])
 
   return (
-    <div className="min-h-screen bg-black pt-24 pb-20">
+    <div className="min-h-screen bg-base pt-24 pb-20">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="mb-12">
           <p className="font-mono text-[11px] text-[#ce0000] uppercase tracking-[0.25em] mb-3">
             Правова інформація
           </p>
-          <h1 className="font-display text-5xl sm:text-6xl text-white mb-4">
+          <h1 className="font-display text-5xl sm:text-6xl text-primary mb-4">
             УМОВИ ВИКОРИСТАННЯ
           </h1>
-          <p className="font-mono text-[11px] text-slate-600">
+          <p className="font-mono text-[11px] text-subtle">
             Дата набрання чинності: 01 січня 2026 р. · Остання редакція: 01 квітня 2026 р.
           </p>
         </div>
@@ -161,8 +161,8 @@ export const TermsOfUse = () => {
           <p>
             З питань щодо цих Умов використання звертайтеся:
           </p>
-          <div className="mt-3 p-4 rounded-xl border border-white/8 bg-white/[0.02] space-y-1.5">
-            <p><span className="text-white font-medium">ДК Електро-Захід</span></p>
+          <div className="mt-3 p-4 rounded-xl border border-theme bg-card space-y-1.5">
+            <p><span className="text-primary font-medium">ДК Електро-Захід</span></p>
             <p>м. Львів, вул. Зелена, 238</p>
             <p>
               <a href="mailto:info@elektrozahid.com" className="text-[#ce0000] hover:text-red-400 transition-colors">
@@ -172,8 +172,8 @@ export const TermsOfUse = () => {
           </div>
         </Section>
 
-        <div className="mt-12 pt-8 border-t border-white/8">
-          <Link to="/" className="inline-flex items-center gap-2 font-mono text-[11px] text-slate-600 hover:text-white uppercase tracking-widest transition-colors duration-300">
+        <div className="mt-12 pt-8 border-t border-theme">
+          <Link to="/" className="inline-flex items-center gap-2 font-mono text-[11px] text-subtle hover:text-primary uppercase tracking-widest transition-colors duration-300">
             ← Повернутися на головну
           </Link>
         </div>

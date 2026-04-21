@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div className="mb-10">
-    <h2 className="font-condensed font-bold text-white text-2xl uppercase tracking-wide mb-4 pb-3 border-b border-white/8">
+    <h2 className="font-condensed font-bold text-primary text-2xl uppercase tracking-wide mb-4 pb-3 border-b border-theme">
       {title}
     </h2>
-    <div className="space-y-3 font-sans text-slate-200 text-sm leading-relaxed">
+    <div className="space-y-3 font-sans text-secondary text-sm leading-relaxed">
       {children}
     </div>
   </div>
@@ -48,17 +48,17 @@ export const CookiePolicy = () => {
   }
 
   return (
-    <div className="min-h-screen bg-black pt-24 pb-20">
+    <div className="min-h-screen bg-base pt-24 pb-20">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="mb-12">
           <p className="font-mono text-[11px] text-[#ce0000] uppercase tracking-[0.25em] mb-3">
             Правова інформація
           </p>
-          <h1 className="font-display text-5xl sm:text-6xl text-white mb-4">
+          <h1 className="font-display text-5xl sm:text-6xl text-primary mb-4">
             ПОЛІТИКА COOKIES
           </h1>
-          <p className="font-mono text-[11px] text-slate-600">
+          <p className="font-mono text-[11px] text-subtle">
             Дата набрання чинності: 01 січня 2026 р. · Остання редакція: 01 квітня 2026 р.
           </p>
         </div>
@@ -87,17 +87,17 @@ export const CookiePolicy = () => {
               },
               {
                 type: 'Аналітичні (Analytics)',
-                color: 'border-white/10 bg-white/[0.02]',
+                color: 'border-theme-2 bg-card',
                 desc: 'Ці cookies дозволяють нам відстежувати відвідуваність та поведінку користувачів для покращення Сайту. Ми використовуємо Google Analytics. Правова підстава: ваша згода (ст. 6(1)(a) GDPR).',
               },
               {
                 type: 'Маркетингові (Marketing)',
-                color: 'border-white/10 bg-white/[0.02]',
+                color: 'border-theme-2 bg-card',
                 desc: 'Ці cookies відстежують вашу активність для показу персоналізованої реклами. Можуть використовуватися Google Ads та Facebook Pixel. Правова підстава: ваша згода (ст. 6(1)(a) GDPR).',
               },
             ].map((item) => (
               <div key={item.type} className={`p-4 rounded-xl border ${item.color}`}>
-                <p className="text-white font-medium mb-2">{item.type}</p>
+                <p className="text-primary font-medium mb-2">{item.type}</p>
                 <p>{item.desc}</p>
               </div>
             ))}
@@ -108,15 +108,15 @@ export const CookiePolicy = () => {
           <p className="mb-4">Перелік конкретних cookies, які використовуються на Сайті:</p>
           {cookieTable.map((group) => (
             <div key={group.category} className="mb-6">
-              <p className="font-condensed font-bold text-white text-base uppercase tracking-wide mb-3">
+              <p className="font-condensed font-bold text-primary text-base uppercase tracking-wide mb-3">
                 {group.category}
               </p>
-              <div className="overflow-x-auto rounded-xl border border-white/8">
+              <div className="overflow-x-auto rounded-xl border border-theme">
                 <table className="w-full text-xs">
                   <thead>
-                    <tr className="border-b border-white/8 bg-white/[0.03]">
+                    <tr className="border-b border-theme bg-dim">
                       {['Назва', 'Призначення', 'Термін зберігання', 'Провайдер'].map((h) => (
-                        <th key={h} className="text-left px-4 py-3 font-mono text-slate-500 uppercase tracking-widest text-[10px] whitespace-nowrap">
+                        <th key={h} className="text-left px-4 py-3 font-mono text-t-muted uppercase tracking-widest text-[10px] whitespace-nowrap">
                           {h}
                         </th>
                       ))}
@@ -125,11 +125,11 @@ export const CookiePolicy = () => {
                   <tbody>
                     {group.cookies.map((c, i) => (
                       <tr key={c.name}
-                          className={`border-b border-white/5 ${i % 2 === 0 ? 'bg-transparent' : 'bg-white/[0.01]'}`}>
+                          className={`border-b border-faint ${i % 2 === 0 ? 'bg-transparent' : 'bg-dim'}`}>
                         <td className="px-4 py-3 font-mono text-[#ce0000] whitespace-nowrap">{c.name}</td>
-                        <td className="px-4 py-3 text-slate-200">{c.purpose}</td>
-                        <td className="px-4 py-3 text-slate-500 whitespace-nowrap">{c.duration}</td>
-                        <td className="px-4 py-3 text-slate-500 whitespace-nowrap">{c.provider}</td>
+                        <td className="px-4 py-3 text-secondary">{c.purpose}</td>
+                        <td className="px-4 py-3 text-t-muted whitespace-nowrap">{c.duration}</td>
+                        <td className="px-4 py-3 text-t-muted whitespace-nowrap">{c.provider}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -168,8 +168,8 @@ export const CookiePolicy = () => {
             Ви маєте кілька способів управляти файлами cookie:
           </p>
           <div className="space-y-4 mt-3">
-            <div className="p-4 rounded-xl border border-white/8 bg-white/[0.02]">
-              <p className="text-white font-medium mb-2">Через наш сайт</p>
+            <div className="p-4 rounded-xl border border-theme bg-card">
+              <p className="text-primary font-medium mb-2">Через наш сайт</p>
               <p className="mb-3">
                 Ви можете змінити свої налаштування cookies, скинувши поточну згоду. При
                 наступному відвідуванні сайту з'явиться повторний запит.
@@ -182,8 +182,8 @@ export const CookiePolicy = () => {
               </button>
             </div>
 
-            <div className="p-4 rounded-xl border border-white/8 bg-white/[0.02]">
-              <p className="text-white font-medium mb-2">Через налаштування браузера</p>
+            <div className="p-4 rounded-xl border border-theme bg-card">
+              <p className="text-primary font-medium mb-2">Через налаштування браузера</p>
               <p>Більшість браузерів дозволяють управляти cookies через налаштування:</p>
               <ul className="list-none space-y-1.5 mt-2">
                 {[
@@ -194,17 +194,17 @@ export const CookiePolicy = () => {
                 ].map((b) => (
                   <li key={b.name} className="flex items-start gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#ce0000] mt-1.5 shrink-0" />
-                    <span><span className="text-white">{b.name}:</span> {b.note}</span>
+                    <span><span className="text-primary">{b.name}:</span> {b.note}</span>
                   </li>
                 ))}
               </ul>
-              <p className="mt-3 text-xs text-slate-600">
+              <p className="mt-3 text-xs text-subtle">
                 Зверніть увагу: вимкнення cookies може вплинути на функціонування Сайту.
               </p>
             </div>
 
-            <div className="p-4 rounded-xl border border-white/8 bg-white/[0.02]">
-              <p className="text-white font-medium mb-2">Відмова від Google Analytics</p>
+            <div className="p-4 rounded-xl border border-theme bg-card">
+              <p className="text-primary font-medium mb-2">Відмова від Google Analytics</p>
               <p>
                 Для відмови від відстеження Google Analytics встановіть розширення{' '}
                 <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer"
@@ -247,8 +247,8 @@ export const CookiePolicy = () => {
           </p>
         </Section>
 
-        <div className="mt-12 pt-8 border-t border-white/8">
-          <Link to="/" className="inline-flex items-center gap-2 font-mono text-[11px] text-slate-600 hover:text-white uppercase tracking-widest transition-colors duration-300">
+        <div className="mt-12 pt-8 border-t border-theme">
+          <Link to="/" className="inline-flex items-center gap-2 font-mono text-[11px] text-subtle hover:text-primary uppercase tracking-widest transition-colors duration-300">
             ← Повернутися на головну
           </Link>
         </div>

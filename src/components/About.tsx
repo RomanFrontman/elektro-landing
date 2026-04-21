@@ -26,10 +26,10 @@ const values = [
 
 export const About = () => {
   return (
-    <section id="about" className="relative py-24 lg:py-32 bg-[#080808] overflow-hidden">
+    <section id="about" className="relative py-24 lg:py-32 bg-elevated overflow-hidden">
 
       {/* Watermark */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[22rem] leading-none text-white/[0.018] pointer-events-none select-none">
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[22rem] leading-none text-watermark pointer-events-none select-none">
         2008
       </div>
 
@@ -42,13 +42,13 @@ export const About = () => {
               <p className="font-mono text-[11px] text-[#ce0000] uppercase tracking-[0.25em] mb-4">
                 Про компанію
               </p>
-              <h2 className="font-condensed font-bold text-white uppercase tracking-wide mb-6 font-semibold"
+              <h2 className="font-condensed font-bold text-primary uppercase tracking-wide mb-6 font-semibold"
                   style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', lineHeight: 1.1 }}>
                 ДК Електро-Захід
               </h2>
             </div>
 
-            <div className="space-y-4 font-sans text-slate-200 leading-relaxed text-[15px] font-semibold">
+            <div className="space-y-4 font-sans text-secondary leading-relaxed text-[15px] font-semibold">
               <p>
                 ДК Електро-Захід — провідний постачальник промислового
                 електротехнічного обладнання в Україні. Заснована у 2008 році у Львові,
@@ -71,8 +71,8 @@ export const About = () => {
             <div className="mt-8 inline-flex items-center gap-3 px-5 py-3 border border-[#ce0000]/25 bg-[#ce0000]/5 rounded-lg">
               <span className="font-display text-3xl text-[#ce0000] leading-none">2008</span>
               <div>
-                <p className="font-mono text-[10px] text-slate-500 uppercase tracking-widest">На ринку з</p>
-                <p className="font-sans text-sm text-white font-medium">15+ років досвіду</p>
+                <p className="font-mono text-[10px] text-t-muted uppercase tracking-widest">На ринку з</p>
+                <p className="font-sans text-sm text-primary font-medium">15+ років досвіду</p>
               </div>
             </div>
           </Reveal>
@@ -81,14 +81,14 @@ export const About = () => {
           <div className="grid grid-cols-2 gap-4">
             {values.map(({ icon: Icon, title, description }, i) => (
               <Reveal key={title} delay={i * 80}>
-                <div className="group h-full p-5 rounded-xl border border-white/8 bg-white/[0.02] hover:bg-white/[0.05] hover:border-[#ce0000]/30 hover:shadow-lg hover:shadow-[#ce0000]/5 transition-all duration-300">
+                <div className="group h-full p-5 rounded-xl border border-theme bg-card hover:bg-card-hover hover:border-[#ce0000]/30 hover:shadow-lg hover:shadow-[#ce0000]/5 transition-all duration-300">
                   <div className="w-10 h-10 rounded-lg bg-[#ce0000]/10 flex items-center justify-center mb-4 group-hover:bg-[#ce0000]/20 transition-colors duration-300">
                     <Icon className="text-[#ce0000]" size={20} />
                   </div>
-                  <h3 className="font-condensed font-bold text-white text-lg uppercase tracking-wide mb-2">
+                  <h3 className="font-condensed font-bold text-primary text-lg uppercase tracking-wide mb-2">
                     {title}
                   </h3>
-                  <p className="font-sans text-slate-500 text-sm leading-relaxed">
+                  <p className="font-sans text-t-muted text-sm leading-relaxed">
                     {description}
                   </p>
                 </div>

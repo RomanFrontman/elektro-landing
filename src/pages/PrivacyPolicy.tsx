@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div className="mb-10">
-    <h2 className="font-condensed font-bold text-white text-2xl uppercase tracking-wide mb-4 pb-3 border-b border-white/8">
+    <h2 className="font-condensed font-bold text-primary text-2xl uppercase tracking-wide mb-4 pb-3 border-b border-theme">
       {title}
     </h2>
-    <div className="space-y-3 font-sans text-slate-200 text-sm leading-relaxed">
+    <div className="space-y-3 font-sans text-secondary text-sm leading-relaxed">
       {children}
     </div>
   </div>
@@ -16,7 +16,7 @@ export const PrivacyPolicy = () => {
   useEffect(() => { window.scrollTo(0, 0) }, [])
 
   return (
-    <div className="min-h-screen bg-black pt-24 pb-20">
+    <div className="min-h-screen bg-base pt-24 pb-20">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
@@ -24,10 +24,10 @@ export const PrivacyPolicy = () => {
           <p className="font-mono text-[11px] text-[#ce0000] uppercase tracking-[0.25em] mb-3">
             Правова інформація
           </p>
-          <h1 className="font-display text-5xl sm:text-6xl text-white mb-4">
+          <h1 className="font-display text-5xl sm:text-6xl text-primary mb-4">
             ПОЛІТИКА КОНФІДЕНЦІЙНОСТІ
           </h1>
-          <p className="font-mono text-[11px] text-slate-600">
+          <p className="font-mono text-[11px] text-subtle">
             Дата набрання чинності: 01 січня 2026 р. · Остання редакція: 01 квітня 2026 р.
           </p>
         </div>
@@ -49,17 +49,17 @@ export const PrivacyPolicy = () => {
 
         <Section title="2. Контролер персональних даних">
           <p>Відповідальним за обробку персональних даних є:</p>
-          <div className="mt-3 p-4 rounded-xl border border-white/8 bg-white/[0.02] space-y-1.5">
-            <p><span className="text-white font-medium">Назва:</span> ДК Електро-Захід</p>
-            <p><span className="text-white font-medium">Адреса:</span> м. Львів, вул. Зелена, 238, Україна</p>
+          <div className="mt-3 p-4 rounded-xl border border-theme bg-card space-y-1.5">
+            <p><span className="text-primary font-medium">Назва:</span> ДК Електро-Захід</p>
+            <p><span className="text-primary font-medium">Адреса:</span> м. Львів, вул. Зелена, 238, Україна</p>
             <p>
-              <span className="text-white font-medium">Email:</span>{' '}
+              <span className="text-primary font-medium">Email:</span>{' '}
               <a href="mailto:info@elektrozahid.com" className="text-[#ce0000] hover:text-red-400 transition-colors">
                 info@elektrozahid.com
               </a>
             </p>
             <p>
-              <span className="text-white font-medium">Телефон:</span>{' '}
+              <span className="text-primary font-medium">Телефон:</span>{' '}
               <a href="tel:+380322454753" className="text-[#ce0000] hover:text-red-400 transition-colors">
                 (032) 245-47-53
               </a>
@@ -106,8 +106,8 @@ export const PrivacyPolicy = () => {
                 desc: 'Надсилання маркетингових матеріалів та новин компанії — лише за вашою явною згодою.',
               },
             ].map((item) => (
-              <div key={item.title} className="p-4 rounded-lg border border-white/8 bg-white/[0.02]">
-                <p className="text-white font-medium mb-1">{item.title}</p>
+              <div key={item.title} className="p-4 rounded-lg border border-theme bg-card">
+                <p className="text-primary font-medium mb-1">{item.title}</p>
                 <p>{item.desc}</p>
               </div>
             ))}
@@ -144,8 +144,8 @@ export const PrivacyPolicy = () => {
               { right: 'Право відкликати згоду', desc: 'Відкликати згоду на обробку в будь-який момент.' },
               { right: 'Право на скаргу',        desc: 'Подати скаргу до наглядового органу.' },
             ].map((item) => (
-              <div key={item.right} className="p-3 rounded-lg border border-white/8 bg-white/[0.02]">
-                <p className="text-white font-medium text-sm mb-1">{item.right}</p>
+              <div key={item.right} className="p-3 rounded-lg border border-theme bg-card">
+                <p className="text-primary font-medium text-sm mb-1">{item.right}</p>
                 <p className="text-xs">{item.desc}</p>
               </div>
             ))}
@@ -198,7 +198,7 @@ export const PrivacyPolicy = () => {
           <p>
             Якщо ви вважаєте, що обробка ваших персональних даних порушує вимоги GDPR, ви маєте право
             подати скаргу до відповідного наглядового органу. В Україні таким органом є{' '}
-            <span className="text-white">Уповноважений Верховної Ради України з прав людини</span>.
+            <span className="text-primary">Уповноважений Верховної Ради України з прав людини</span>.
             Якщо ви є резидентом ЄС — до наглядового органу вашої країни.
           </p>
         </Section>
@@ -210,14 +210,14 @@ export const PrivacyPolicy = () => {
           </p>
         </Section>
 
-        <div className="mt-12 pt-8 border-t border-white/8">
-          <p className="font-sans text-slate-600 text-sm">
+        <div className="mt-12 pt-8 border-t border-theme">
+          <p className="font-sans text-subtle text-sm">
             З питань конфіденційності: {' '}
             <a href="mailto:info@elektrozahid.com" className="text-[#ce0000] hover:text-red-400 transition-colors">
               info@elektrozahid.com
             </a>
           </p>
-          <Link to="/" className="inline-flex items-center gap-2 mt-4 font-mono text-[11px] text-slate-600 hover:text-white uppercase tracking-widest transition-colors duration-300">
+          <Link to="/" className="inline-flex items-center gap-2 mt-4 font-mono text-[11px] text-subtle hover:text-primary uppercase tracking-widest transition-colors duration-300">
             ← Повернутися на головну
           </Link>
         </div>

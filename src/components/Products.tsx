@@ -71,10 +71,10 @@ const products = [
 
 export const Products = () => {
   return (
-    <section id="products" className="relative py-24 lg:py-32 bg-black overflow-hidden">
+    <section id="products" className="relative py-24 lg:py-32 bg-base overflow-hidden">
 
       {/* Watermark number */}
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 font-display leading-none text-white/[0.015] pointer-events-none select-none"
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 font-display leading-none text-watermark pointer-events-none select-none"
            style={{ fontSize: '28rem' }}>
         06
       </div>
@@ -89,11 +89,11 @@ export const Products = () => {
             </p>
           </div>
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-            <h2 className="font-condensed font-bold text-white uppercase tracking-wide"
+            <h2 className="font-condensed font-bold text-primary uppercase tracking-wide"
                 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', lineHeight: 1.1 }}>
               Наша продукція
             </h2>
-            <p className="font-sans text-slate-200 text-sm max-w-xs leading-relaxed">
+            <p className="font-sans text-secondary text-sm max-w-xs leading-relaxed">
               Повний спектр промислового електротехнічного обладнання для будь-яких потреб виробництва.
             </p>
           </div>
@@ -104,8 +104,7 @@ export const Products = () => {
           {showcase.map(({ img, name, sub }, i) => (
             <Reveal key={name} delay={i * 60}>
               <div
-                data-theme-locked
-                className="group relative overflow-hidden rounded-xl aspect-square cursor-default"
+                className="zone-dark group relative overflow-hidden rounded-xl aspect-square cursor-default"
                 style={{ background: '#0d0d0d' }}
               >
                 {/* Red corner accent */}
@@ -127,10 +126,10 @@ export const Products = () => {
 
                 {/* Text */}
                 <div className="absolute inset-x-0 bottom-0 z-20 p-4">
-                  <p className="font-condensed font-bold text-white text-sm uppercase tracking-wide leading-tight">
+                  <p className="font-condensed font-bold text-primary text-sm uppercase tracking-wide leading-tight">
                     {name}
                   </p>
-                  <p className="font-mono text-[10px] text-slate-500 mt-0.5 tracking-wider">
+                  <p className="font-mono text-[10px] text-t-muted mt-0.5 tracking-wider">
                     {sub}
                   </p>
                 </div>
@@ -144,10 +143,10 @@ export const Products = () => {
         </div>
 
         {/* Category cards grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 rounded-xl overflow-hidden border border-white/5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-muted rounded-xl overflow-hidden border border-faint">
           {products.map(({ icon: Icon, title, items }, i) => (
             <Reveal key={title} delay={i * 60}>
-              <div className="group h-full p-7 bg-[#080808] hover:bg-[#0f0f0f] hover:shadow-[inset_0_0_40px_rgba(206,0,0,0.04)] transition-all duration-300 cursor-default">
+              <div className="group h-full p-7 bg-elevated hover:bg-card hover:shadow-[inset_0_0_40px_rgba(206,0,0,0.04)] transition-all duration-300 cursor-default">
 
                 {/* Icon row with red accent bar */}
                 <div className="flex items-start gap-4 mb-5">
@@ -158,7 +157,7 @@ export const Products = () => {
                 </div>
 
                 {/* Title */}
-                <h3 className="font-condensed font-bold text-white text-lg uppercase tracking-wide mb-4 leading-snug pl-5">
+                <h3 className="font-condensed font-bold text-primary text-lg uppercase tracking-wide mb-4 leading-snug pl-5">
                   {title}
                 </h3>
 
@@ -167,7 +166,7 @@ export const Products = () => {
                   {items.map((item) => (
                     <li key={item} className="flex items-start gap-2.5">
                       <span className="mt-[7px] w-1 h-1 rounded-full bg-[#ce0000]/50 group-hover:bg-[#ce0000]/80 transition-colors duration-300 shrink-0" />
-                      <span className="font-sans text-sm text-slate-300 leading-relaxed group-hover:text-white/90 transition-colors duration-300">
+                      <span className="font-sans text-sm text-tertiary leading-relaxed group-hover:text-secondary transition-colors duration-300">
                         {item}
                       </span>
                     </li>

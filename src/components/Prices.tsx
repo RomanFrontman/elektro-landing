@@ -48,7 +48,7 @@ const plans = [
 
 export const Prices = () => {
   return (
-    <section id="prices" className="relative py-24 lg:py-32 bg-black overflow-hidden">
+    <section id="prices" className="relative py-24 lg:py-32 bg-base overflow-hidden">
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -60,11 +60,11 @@ export const Prices = () => {
             </p>
           </div>
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-            <h2 className="font-condensed font-bold text-white uppercase tracking-wide"
+            <h2 className="font-condensed font-bold text-primary uppercase tracking-wide"
                 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', lineHeight: 1.1 }}>
               Тарифи співпраці
             </h2>
-            <p className="font-sans text-slate-500 text-sm max-w-xs leading-relaxed">
+            <p className="font-sans text-t-muted text-sm max-w-xs leading-relaxed">
               Гнучкі умови для роздрібних покупців, оптовиків та великих підприємств.
             </p>
           </div>
@@ -77,8 +77,8 @@ export const Prices = () => {
               <div
                 className={`relative h-full rounded-2xl p-7 border transition-all duration-300 flex flex-col ${
                   plan.popular
-                    ? 'border-[#ce0000] bg-[#0c0000] shadow-2xl shadow-[#ce0000]/10 md:-mt-4 md:-mb-4'
-                    : 'border-white/8 bg-white/[0.02] hover:border-white/15 hover:bg-white/[0.04]'
+                    ? 'border-[#ce0000] bg-accent-card shadow-2xl shadow-[#ce0000]/10 md:-mt-4 md:-mb-4'
+                    : 'border-theme bg-card hover:border-theme-2 hover:bg-card-hover'
                 }`}
               >
                 {/* Popular badge */}
@@ -91,17 +91,17 @@ export const Prices = () => {
 
                 {/* Plan name + description */}
                 <div className="mb-6 pt-4">
-                  <h3 className="font-condensed font-bold text-white text-xl uppercase tracking-wide mb-1">
+                  <h3 className="font-condensed font-bold text-primary text-xl uppercase tracking-wide mb-1">
                     {plan.name}
                   </h3>
-                  <p className="font-sans text-slate-500 text-sm">
+                  <p className="font-sans text-t-muted text-sm">
                     {plan.description}
                   </p>
                 </div>
 
                 {/* Price */}
-                <div className="mb-6 pb-6 border-b border-white/8">
-                  <span className={`font-display text-5xl leading-none ${plan.popular ? 'text-[#ce0000]' : 'text-white'}`}>
+                <div className="mb-6 pb-6 border-b border-theme">
+                  <span className={`font-display text-5xl leading-none ${plan.popular ? 'text-[#ce0000]' : 'text-primary'}`}>
                     {plan.range}
                   </span>
                 </div>
@@ -111,7 +111,7 @@ export const Prices = () => {
                   {plan.features.map((f) => (
                     <li key={f} className="flex items-start gap-3">
                       <Check size={15} className="text-[#ce0000] mt-0.5 shrink-0" />
-                      <span className="font-sans text-sm text-slate-200">{f}</span>
+                      <span className="font-sans text-sm text-secondary">{f}</span>
                     </li>
                   ))}
                 </ul>
@@ -122,7 +122,7 @@ export const Prices = () => {
                   className={`w-full inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 ${
                     plan.popular
                       ? 'bg-[#ce0000] hover:bg-red-700 text-white hover:shadow-lg hover:shadow-[#ce0000]/30'
-                      : 'bg-white/6 hover:bg-white/10 text-white border border-white/8 hover:border-white/20'
+                      : 'bg-dim hover:bg-dim-hover text-primary border border-theme hover:border-theme-2'
                   }`}
                 >
                   {plan.cta}

@@ -49,7 +49,7 @@ export const DiscountCTA = () => {
     <section
       ref={sectionRef}
       id="discount"
-      className={`relative overflow-hidden py-24 lg:py-32 ${v ? 'cta-section-enter' : 'opacity-0'}`}
+      className={`zone-dark relative overflow-hidden py-24 lg:py-32 ${v ? 'cta-section-enter' : 'opacity-0'}`}
       style={{
         background: 'radial-gradient(ellipse at 60% 35%, #6b0000 0%, #290000 40%, #0c0000 75%, #000 100%)',
       }}

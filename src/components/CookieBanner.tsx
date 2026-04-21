@@ -14,7 +14,6 @@ function loadPrefs(): Preferences | null {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
     if (!raw) return null
-    // backwards compat with old string format
     if (raw === 'all')       return { analytics: true,  marketing: true  }
     if (raw === 'necessary') return { analytics: false, marketing: false }
     return JSON.parse(raw) as Preferences
@@ -78,14 +77,14 @@ const CategoryRow = ({
   const [open, setOpen] = useState(false)
 
   return (
-    <div className="border border-white/8 rounded-xl overflow-hidden">
+    <div className="border border-theme rounded-xl overflow-hidden">
       <div className="flex items-center gap-3 p-4">
         <div className="shrink-0 w-9 h-9 rounded-lg bg-[#ce0000]/8 border border-[#ce0000]/15 flex items-center justify-center text-[#ce0000]">
           {icon}
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="font-condensed font-bold text-white text-sm uppercase tracking-wide">
+            <span className="font-condensed font-bold text-primary text-sm uppercase tracking-wide">
               {title}
             </span>
             {badge && (
@@ -94,14 +93,14 @@ const CategoryRow = ({
               </span>
             )}
           </div>
-          <p className="font-sans text-xs text-slate-500 mt-0.5 leading-snug">{description}</p>
+          <p className="font-sans text-xs text-t-muted mt-0.5 leading-snug">{description}</p>
         </div>
         <div className="flex items-center gap-3 shrink-0">
           <Toggle checked={checked} onChange={onChange} disabled={disabled} />
           <button
             type="button"
             onClick={() => setOpen(o => !o)}
-            className="text-slate-600 hover:text-slate-200 transition-colors duration-200"
+            className="text-subtle hover:text-secondary transition-colors duration-200"
             aria-label="Деталі"
           >
             {open ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
@@ -109,7 +108,7 @@ const CategoryRow = ({
         </div>
       </div>
       {open && (
-        <p className="px-4 pb-4 text-xs text-slate-500 leading-relaxed border-t border-white/8 pt-3">
+        <p className="px-4 pb-4 text-xs text-t-muted leading-relaxed border-t border-theme pt-3">
           {details}
         </p>
       )}
@@ -167,14 +166,15 @@ export const CookieBanner = () => {
         </button>
       )}
 
-      {/* ── Simple banner ─────────────────────────────────────────────── */}
+      {/* ── Simple banner (always dark) ───────────────────────────────── */}
       {view === 'banner' && (
         <div
           className={`fixed bottom-0 left-0 right-0 z-[100] transition-transform duration-500 ease-out ${
             dismissing ? 'translate-y-full' : 'translate-y-0'
           }`}
         >
-          <div className="relative bg-[#0f0f0f] border-t border-white/10 shadow-2xl shadow-black/80">
+          {/* zone-dark keeps all semantic text tokens at dark-mode values regardless of theme */}
+          <div className="zone-dark relative bg-[#0f0f0f] border-t border-theme shadow-2xl shadow-black/80">
             <div className="h-px bg-gradient-to-r from-transparent via-[#ce0000] to-transparent" />
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
               <div className="flex flex-col lg:flex-row items-start lg:items-center gap-5">
@@ -185,10 +185,10 @@ export const CookieBanner = () => {
                     <Cookie className="text-[#ce0000]" size={18} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="font-condensed font-bold text-white text-base uppercase tracking-wide mb-1">
+                    <p className="font-condensed font-bold text-primary text-base uppercase tracking-wide mb-1">
                       Ми використовуємо файли Cookie
                     </p>
-                    <p className="font-sans text-slate-200 text-sm leading-relaxed">
+                    <p className="font-sans text-secondary text-sm leading-relaxed">
                       Цей сайт використовує cookies для покращення вашого досвіду та аналізу трафіку.{' '}
                       <Link
                         to="/cookie-policy"
@@ -204,13 +204,13 @@ export const CookieBanner = () => {
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 shrink-0 w-full lg:w-auto">
                   <button
                     onClick={openPreferences}
-                    className="px-5 py-2.5 border border-white/10 hover:border-white/20 bg-white/[0.03] hover:bg-white/[0.06] text-white text-sm font-semibold rounded-xl transition-all duration-300 whitespace-nowrap"
+                    className="px-5 py-2.5 border border-theme hover:border-theme-2 bg-dim hover:bg-dim-hover text-primary text-sm font-semibold rounded-xl transition-all duration-300 whitespace-nowrap"
                   >
                     Налаштувати
                   </button>
                   <button
                     onClick={declineAll}
-                    className="px-5 py-2.5 border border-white/10 hover:border-white/20 bg-white/[0.03] hover:bg-white/[0.06] text-white text-sm font-semibold rounded-xl transition-all duration-300 whitespace-nowrap"
+                    className="px-5 py-2.5 border border-theme hover:border-theme-2 bg-dim hover:bg-dim-hover text-primary text-sm font-semibold rounded-xl transition-all duration-300 whitespace-nowrap"
                   >
                     Тільки необхідні
                   </button>
@@ -225,7 +225,7 @@ export const CookieBanner = () => {
                 {/* Close */}
                 <button
                   onClick={declineAll}
-                  className="absolute top-4 right-4 text-slate-600 hover:text-slate-200 transition-colors duration-200 lg:static lg:shrink-0"
+                  className="absolute top-4 right-4 text-subtle hover:text-secondary transition-colors duration-200 lg:static lg:shrink-0"
                   aria-label="Закрити"
                 >
                   <X size={18} />
@@ -254,7 +254,7 @@ export const CookieBanner = () => {
             }`}
             style={dismissing ? undefined : { animation: 'fadeInUp 0.35s cubic-bezier(0.16,1,0.3,1) both' }}
           >
-            <div className="bg-white dark:bg-[#0f0f0f] border border-[oklch(90%_0.012_349)] dark:border-white/10 rounded-t-3xl sm:rounded-2xl shadow-2xl shadow-black/80 p-6">
+            <div className="bg-white dark:bg-[#0f0f0f] border border-[oklch(90%_0.012_349)] dark:border-theme rounded-t-3xl sm:rounded-2xl shadow-2xl shadow-black/80 p-6">
 
               {/* Header */}
               <div className="flex items-center justify-between mb-5">
@@ -263,10 +263,10 @@ export const CookieBanner = () => {
                     <Cookie size={16} className="text-[#ce0000]" />
                   </div>
                   <div>
-                    <h3 className="font-condensed font-bold text-white text-base uppercase tracking-wide leading-none">
+                    <h3 className="font-condensed font-bold text-primary text-base uppercase tracking-wide leading-none">
                       Налаштування Cookies
                     </h3>
-                    <p className="font-sans text-xs text-slate-500 mt-1">
+                    <p className="font-sans text-xs text-t-muted mt-1">
                       Оберіть, які дані дозволяєте збирати.{' '}
                       <Link
                         to="/cookie-policy"
@@ -279,7 +279,7 @@ export const CookieBanner = () => {
                 </div>
                 <button
                   onClick={saveCustom}
-                  className="text-slate-600 hover:text-slate-200 transition-colors duration-200 p-1"
+                  className="text-subtle hover:text-secondary transition-colors duration-200 p-1"
                   aria-label="Закрити"
                 >
                   <X size={18} />
@@ -326,13 +326,13 @@ export const CookieBanner = () => {
                 </button>
                 <button
                   onClick={saveCustom}
-                  className="flex-1 px-4 py-2.5 border border-white/12 hover:border-white/22 bg-white/[0.03] hover:bg-white/[0.06] text-white text-sm font-semibold rounded-xl transition-all duration-300"
+                  className="flex-1 px-4 py-2.5 border border-theme hover:border-theme-2 bg-dim hover:bg-dim-hover text-primary text-sm font-semibold rounded-xl transition-all duration-300"
                 >
                   Зберегти вибір
                 </button>
                 <button
                   onClick={declineAll}
-                  className="flex-1 px-4 py-2.5 border border-white/12 hover:border-white/22 bg-white/[0.03] hover:bg-white/[0.06] text-white text-sm font-semibold rounded-xl transition-all duration-300"
+                  className="flex-1 px-4 py-2.5 border border-theme hover:border-theme-2 bg-dim hover:bg-dim-hover text-primary text-sm font-semibold rounded-xl transition-all duration-300"
                 >
                   Відмовитись
                 </button>

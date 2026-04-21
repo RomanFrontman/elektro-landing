@@ -111,9 +111,7 @@ export const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? isDark
-            ? 'bg-black/95 backdrop-blur-md border-b border-white/10 shadow-xl shadow-black/50'
-            : 'bg-white/95 backdrop-blur-md border-b border-black/10 shadow-lg shadow-gray-200/80'
+          ? 'bg-overlay backdrop-blur-md border-b border-theme shadow-lg'
           : 'bg-transparent border-b border-transparent'
       }`}
     >
@@ -136,11 +134,7 @@ export const Header = () => {
               <Link
                 key={link.to}
                 to={link.to}
-                className={`font-sans text-sm transition-colors duration-300 relative group ${
-                  isDark
-                    ? 'text-slate-200 hover:text-white'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
+                className="font-sans text-sm text-secondary hover:text-primary transition-colors duration-300 relative group"
               >
                 {link.label}
                 <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[#ce0000] transition-all duration-300 group-hover:w-full" />
@@ -163,9 +157,7 @@ export const Header = () => {
           <div className="md:hidden flex items-center gap-2">
             <ThemeToggle />
             <button
-              className={`transition-colors duration-300 p-1 ${
-                isDark ? 'text-slate-200 hover:text-white' : 'text-slate-600 hover:text-slate-900'
-              }`}
+              className="text-secondary hover:text-primary transition-colors duration-300 p-1"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Відкрити меню"
             >
@@ -177,23 +169,13 @@ export const Header = () => {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div
-          className={`md:hidden border-t px-4 py-6 ${
-            isDark
-              ? 'bg-black/98 border-white/10'
-              : 'bg-white/98 border-black/10'
-          }`}
-        >
+        <div className="md:hidden border-t border-theme px-4 py-6 bg-overlay-heavy">
           <nav className="flex flex-col gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
-                className={`font-sans font-medium py-2.5 px-3 rounded-lg transition-all duration-200 ${
-                  isDark
-                    ? 'text-slate-300 hover:text-white hover:bg-white/5'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-black/5'
-                }`}
+                className="font-sans font-medium py-2.5 px-3 rounded-lg text-secondary hover:text-primary hover:bg-dim transition-all duration-200"
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}

@@ -10,9 +10,9 @@ type FormData = {
 }
 
 const phones = [
-  { display: '(032) 245-47-53', href: 'tel:+380322454753' },
-  { display: '(067) 672-37-81', href: 'tel:+380676723781' },
-  { display: '(067) 672-37-78', href: 'tel:+380676723778' },
+  { display: '+38(032) 245-47-53', href: 'tel:+380322454753' },
+  { display: '+38(067) 672-37-81', href: 'tel:+380676723781' },
+  { display: '+38(067) 672-37-78', href: 'tel:+380676723778' },
 ]
 
 export const Contact = () => {
@@ -32,15 +32,15 @@ export const Contact = () => {
   }
 
   const inputClass = [
-    'w-full px-4 py-3 rounded-lg font-sans text-sm text-white',
-    'bg-white/[0.04] border border-white/10',
-    'placeholder:text-slate-600',
+    'w-full px-4 py-3 rounded-lg font-sans text-sm text-primary',
+    'bg-card border border-theme',
+    'placeholder:text-subtle',
     'focus:outline-none focus:border-[#ce0000]/50 focus:ring-2 focus:ring-[#ce0000]/8',
     'transition-all duration-300',
   ].join(' ')
 
   return (
-    <section id="contact" className="relative py-24 lg:py-32 bg-black overflow-hidden">
+    <section id="contact" className="relative py-24 lg:py-32 bg-base overflow-hidden">
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -51,7 +51,7 @@ export const Contact = () => {
               Контакти
             </p>
           </div>
-          <h2 className="font-condensed font-bold text-white uppercase tracking-wide"
+          <h2 className="font-condensed font-bold text-primary uppercase tracking-wide"
               style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', lineHeight: 1.1 }}>
             Зв'яжіться з нами
           </h2>
@@ -61,7 +61,7 @@ export const Contact = () => {
 
           {/* ── Left: contact info ── */}
           <Reveal direction="left">
-            <p className="font-sans text-slate-200 text-sm leading-relaxed pb-4 max-w-sm">
+            <p className="font-sans text-secondary text-sm leading-relaxed pb-4 max-w-sm">
               Маєте запитання або хочете отримати комерційну пропозицію?
               Зв'яжіться з нами зручним способом.
             </p>
@@ -74,8 +74,8 @@ export const Contact = () => {
                   <MapPin className="text-[#ce0000]" size={18} />
                 </div>
                 <div>
-                  <p className="font-mono text-[10px] text-slate-600 uppercase tracking-widest mb-1">Адреса</p>
-                  <p className="font-sans text-slate-200 text-sm font-medium">м. Львів, вул. Зелена, 238</p>
+                  <p className="font-mono text-[10px] text-subtle uppercase tracking-widest mb-1">Адреса</p>
+                  <p className="font-sans text-secondary text-sm font-medium">м. Львів, вул. Зелена, 238</p>
                 </div>
               </div>
 
@@ -85,11 +85,11 @@ export const Contact = () => {
                   <Phone className="text-[#ce0000]" size={18} />
                 </div>
                 <div>
-                  <p className="font-mono text-[10px] text-slate-600 uppercase tracking-widest mb-2">Телефон</p>
+                  <p className="font-mono text-[10px] text-subtle uppercase tracking-widest mb-2">Телефон</p>
                   <div className="flex flex-col gap-1">
                     {phones.map((p) => (
                       <a key={p.href} href={p.href}
-                         className="font-sans text-slate-200 text-sm font-medium hover:text-[#ce0000] transition-colors duration-300">
+                         className="font-sans text-secondary text-sm font-medium hover:text-[#ce0000] transition-colors duration-300">
                         {p.display}
                       </a>
                     ))}
@@ -103,9 +103,9 @@ export const Contact = () => {
                   <Mail className="text-[#ce0000]" size={18} />
                 </div>
                 <div>
-                  <p className="font-mono text-[10px] text-slate-600 uppercase tracking-widest mb-1">Email</p>
+                  <p className="font-mono text-[10px] text-subtle uppercase tracking-widest mb-1">Email</p>
                   <a href="mailto:info@elektrozahid.com"
-                     className="font-sans text-slate-200 text-sm font-medium hover:text-[#ce0000] transition-colors duration-300">
+                     className="font-sans text-secondary text-sm font-medium hover:text-[#ce0000] transition-colors duration-300">
                     info@elektrozahid.com
                   </a>
                 </div>
@@ -117,19 +117,19 @@ export const Contact = () => {
                   <Clock className="text-[#ce0000]" size={18} />
                 </div>
                 <div>
-                  <p className="font-mono text-[10px] text-slate-600 uppercase tracking-widest mb-1">Графік роботи</p>
-                  <p className="font-sans text-slate-200 text-sm font-medium">Пн–Пт: 8:00–18:00</p>
-                  <p className="font-sans text-slate-500 text-sm">Сб: 9:00–14:00</p>
+                  <p className="font-mono text-[10px] text-subtle uppercase tracking-widest mb-1">Графік роботи</p>
+                  <p className="font-sans text-secondary text-sm font-medium">Пн–Пт: 9:00–17:00</p>
+                  <p className="font-sans text-t-muted text-sm">Обід: 13:00–14:00</p>
                 </div>
               </div>
             </div>
 
             {/* Quick call CTA */}
             <div className="p-5 rounded-xl border border-[#ce0000]/20 bg-[#ce0000]/5">
-              <p className="font-condensed font-bold text-white uppercase tracking-wide text-base mb-1">
+              <p className="font-condensed font-bold text-primary uppercase tracking-wide text-base mb-1">
                 Потрібна консультація?
               </p>
-              <p className="font-sans text-slate-500 text-sm pb-2">
+              <p className="font-sans text-t-muted text-sm pb-2">
                 Наші спеціалісти готові відповісти на запитання щодо підбору обладнання.
               </p>
               <a href="tel:+380322454753"
@@ -142,23 +142,23 @@ export const Contact = () => {
 
           {/* ── Right: form ── */}
           <Reveal direction="right">
-            <div className="rounded-2xl border border-white/8 bg-white/[0.02] p-8">
+            <div className="rounded-2xl border border-theme bg-card p-8">
               {submitted ? (
                 <div className="flex flex-col items-center justify-center py-16 text-center">
                   <div className="w-16 h-16 rounded-2xl bg-[#ce0000]/10 border border-[#ce0000]/20 flex items-center justify-center mb-5">
                     <CheckCircle className="text-[#ce0000]" size={30} />
                   </div>
-                  <h3 className="font-condensed font-bold text-white text-2xl uppercase tracking-wide mb-2">
+                  <h3 className="font-condensed font-bold text-primary text-2xl uppercase tracking-wide mb-2">
                     Повідомлення надіслано!
                   </h3>
-                  <p className="font-sans text-slate-500 text-sm max-w-xs leading-relaxed">
+                  <p className="font-sans text-t-muted text-sm max-w-xs leading-relaxed">
                     Дякуємо за звернення. Наш менеджер зв'яжеться з вами найближчим часом.
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
-                    <label className="block font-mono text-[10px] text-slate-500 uppercase tracking-widest mb-2">
+                    <label className="block font-mono text-[10px] text-subtle uppercase tracking-widest mb-2">
                       Ваше ім'я <span className="text-[#ce0000]">*</span>
                     </label>
                     <input type="text" name="name" value={formData.name} onChange={handleChange}
@@ -167,14 +167,14 @@ export const Contact = () => {
 
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
-                      <label className="block font-mono text-[10px] text-slate-500 uppercase tracking-widest mb-2">
+                      <label className="block font-mono text-[10px] text-subtle uppercase tracking-widest mb-2">
                         Email <span className="text-[#ce0000]">*</span>
                       </label>
                       <input type="email" name="email" value={formData.email} onChange={handleChange}
                              placeholder="ivan@company.ua" required className={inputClass} />
                     </div>
                     <div>
-                      <label className="block font-mono text-[10px] text-slate-500 uppercase tracking-widest mb-2">
+                      <label className="block font-mono text-[10px] text-subtle uppercase tracking-widest mb-2">
                         Телефон
                       </label>
                       <input type="tel" name="phone" value={formData.phone} onChange={handleChange}
@@ -183,7 +183,7 @@ export const Contact = () => {
                   </div>
 
                   <div>
-                    <label className="block font-mono text-[10px] text-slate-500 uppercase tracking-widest mb-2">
+                    <label className="block font-mono text-[10px] text-subtle uppercase tracking-widest mb-2">
                       Повідомлення <span className="text-[#ce0000]">*</span>
                     </label>
                     <textarea name="message" value={formData.message} onChange={handleChange}

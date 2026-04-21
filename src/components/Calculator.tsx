@@ -133,15 +133,15 @@ export const Calculator = () => {
   const step = !series ? 1 : rpm == null ? 2 : kw == null ? 3 : mounting == null ? 4 : 5
 
   const btnBase =
-    'rounded-xl border border-white/10 bg-white/[0.03] px-5 py-3 text-left ' +
+    'rounded-xl border border-theme bg-dim px-5 py-3 text-left ' +
     'hover:border-[#ce0000]/40 hover:bg-[#ce0000]/5 transition-all duration-200 cursor-pointer'
 
   return (
-    <section id="calculator" className="relative py-24 lg:py-32 bg-[#080808] overflow-hidden">
+    <section id="calculator" className="relative py-24 lg:py-32 bg-elevated overflow-hidden">
 
       {/* faint watermark */}
       <div
-        className="absolute left-0 bottom-0 font-condensed font-bold leading-none text-white/[0.015] pointer-events-none select-none"
+        className="absolute left-0 bottom-0 font-condensed font-bold leading-none text-watermark pointer-events-none select-none"
         style={{ fontSize: '20rem' }}
       >
         кВт
@@ -158,12 +158,12 @@ export const Calculator = () => {
           </div>
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
             <h2
-              className="font-condensed font-bold text-white uppercase tracking-wide"
+              className="font-condensed font-bold text-primary uppercase tracking-wide"
               style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', lineHeight: 1.1 }}
             >
               Підберіть двигун
             </h2>
-            <p className="font-sans text-slate-500 text-sm max-w-xs leading-relaxed">
+            <p className="font-sans text-t-muted text-sm max-w-xs leading-relaxed">
               Оберіть параметри — отримайте модель та ціну. Ціни вказані в USD.
             </p>
           </div>
@@ -180,12 +180,12 @@ export const Calculator = () => {
                   <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 font-mono text-xs font-medium transition-all duration-300 ${
                     done   ? 'bg-[#ce0000] border border-[#ce0000] text-white'
                     : active ? 'bg-[#ce0000]/10 border border-[#ce0000]/50 text-[#ce0000]'
-                    : 'bg-white/[0.03] border border-white/10 text-slate-600'
+                    : 'bg-dim border border-theme text-subtle'
                   }`}>
                     {done ? <CheckCircle2 size={14} /> : n}
                   </div>
                   {n < 4 && (
-                    <div className={`h-px flex-1 transition-all duration-500 ${step > n ? 'bg-[#ce0000]/50' : 'bg-white/8'}`} />
+                    <div className={`h-px flex-1 transition-all duration-500 ${step > n ? 'bg-[#ce0000]/50' : 'bg-theme'}`} />
                   )}
                 </div>
               )
@@ -194,7 +194,7 @@ export const Calculator = () => {
           <div className="flex justify-between mt-2 px-0.5">
             {['Серія','Оберти','Потужність','Кріплення'].map((label, i) => (
               <p key={label} className={`font-mono text-[10px] uppercase tracking-widest transition-colors duration-300 ${
-                step === i+1 ? 'text-[#ce0000]' : step > i+1 ? 'text-slate-500' : 'text-slate-700'
+                step === i+1 ? 'text-[#ce0000]' : step > i+1 ? 'text-t-muted' : 'text-faint'
               }`}>{label}</p>
             ))}
           </div>
@@ -203,12 +203,12 @@ export const Calculator = () => {
         {/* ── Step 1: Series ── */}
         <Reveal className="mb-8">
           <div className="flex items-center justify-between mb-4">
-            <p className="font-mono text-[10px] text-slate-600 uppercase tracking-widest">
+            <p className="font-mono text-[10px] text-subtle uppercase tracking-widest">
               Крок 1 — Серія двигуна
             </p>
             {series && (
               <button onClick={() => reset('series')}
-                className="flex items-center gap-1.5 font-mono text-[10px] text-slate-600 hover:text-slate-300 uppercase tracking-widest transition-colors duration-200">
+                className="flex items-center gap-1.5 font-mono text-[10px] text-subtle hover:text-secondary uppercase tracking-widest transition-colors duration-200">
                 <RotateCcw size={11} /> Скинути
               </button>
             )}
@@ -216,15 +216,15 @@ export const Calculator = () => {
 
           {series ? (
             <div className="inline-flex items-center gap-3 px-4 py-2.5 rounded-xl border border-[#ce0000]/30 bg-[#ce0000]/5">
-              <span className="font-sans text-white text-sm font-medium">{SERIES_INFO[series].label}</span>
-              <span className="font-sans text-slate-500 text-xs">{SERIES_INFO[series].desc}</span>
+              <span className="font-sans text-primary text-sm font-medium">{SERIES_INFO[series].label}</span>
+              <span className="font-sans text-t-muted text-xs">{SERIES_INFO[series].desc}</span>
             </div>
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {seriesList.map((s) => (
                 <button key={s} className={btnBase} onClick={() => { reset('series'); setSeries(s) }}>
-                  <p className="font-sans text-white text-sm font-medium mb-0.5">{SERIES_INFO[s].label}</p>
-                  <p className="font-sans text-slate-500 text-xs leading-snug">{SERIES_INFO[s].desc}</p>
+                  <p className="font-sans text-primary text-sm font-medium mb-0.5">{SERIES_INFO[s].label}</p>
+                  <p className="font-sans text-t-muted text-xs leading-snug">{SERIES_INFO[s].desc}</p>
                 </button>
               ))}
             </div>
@@ -235,12 +235,12 @@ export const Calculator = () => {
         {series && (
           <Reveal className="mb-8">
             <div className="flex items-center justify-between mb-4">
-              <p className="font-mono text-[10px] text-slate-600 uppercase tracking-widest">
+              <p className="font-mono text-[10px] text-subtle uppercase tracking-widest">
                 Крок 2 — Швидкість обертання
               </p>
               {rpm != null && (
                 <button onClick={() => reset('rpm')}
-                  className="flex items-center gap-1.5 font-mono text-[10px] text-slate-600 hover:text-slate-300 uppercase tracking-widest transition-colors duration-200">
+                  className="flex items-center gap-1.5 font-mono text-[10px] text-subtle hover:text-secondary uppercase tracking-widest transition-colors duration-200">
                   <RotateCcw size={11} /> Змінити
                 </button>
               )}
@@ -248,15 +248,15 @@ export const Calculator = () => {
 
             {rpm != null ? (
               <div className="inline-flex items-center gap-3 px-4 py-2.5 rounded-xl border border-[#ce0000]/30 bg-[#ce0000]/5">
-                <span className="font-sans text-white text-sm font-medium">{rpm.toLocaleString()} об/хв</span>
-                <span className="font-sans text-slate-500 text-xs">{RPM_LABEL[rpm]}</span>
+                <span className="font-sans text-primary text-sm font-medium">{rpm.toLocaleString()} об/хв</span>
+                <span className="font-sans text-t-muted text-xs">{RPM_LABEL[rpm]}</span>
               </div>
             ) : (
               <div className="flex flex-wrap gap-3">
                 {rpmList.map((r) => (
                   <button key={r} className={btnBase} onClick={() => { reset('rpm'); setRpm(r) }}>
-                    <p className="font-sans text-white text-sm font-medium">{r.toLocaleString()} об/хв</p>
-                    <p className="font-sans text-slate-500 text-xs">{RPM_LABEL[r] ?? ''}</p>
+                    <p className="font-sans text-primary text-sm font-medium">{r.toLocaleString()} об/хв</p>
+                    <p className="font-sans text-t-muted text-xs">{RPM_LABEL[r] ?? ''}</p>
                   </button>
                 ))}
               </div>
@@ -268,12 +268,12 @@ export const Calculator = () => {
         {series && rpm != null && (
           <Reveal className="mb-8">
             <div className="flex items-center justify-between mb-4">
-              <p className="font-mono text-[10px] text-slate-600 uppercase tracking-widest">
+              <p className="font-mono text-[10px] text-subtle uppercase tracking-widest">
                 Крок 3 — Потужність (кВт)
               </p>
               {kw != null && (
                 <button onClick={() => reset('kw')}
-                  className="flex items-center gap-1.5 font-mono text-[10px] text-slate-600 hover:text-slate-300 uppercase tracking-widest transition-colors duration-200">
+                  className="flex items-center gap-1.5 font-mono text-[10px] text-subtle hover:text-secondary uppercase tracking-widest transition-colors duration-200">
                   <RotateCcw size={11} /> Змінити
                 </button>
               )}
@@ -281,13 +281,13 @@ export const Calculator = () => {
 
             {kw != null ? (
               <div className="inline-flex items-center gap-3 px-4 py-2.5 rounded-xl border border-[#ce0000]/30 bg-[#ce0000]/5">
-                <span className="font-sans text-white text-sm font-medium">{kw} кВт</span>
+                <span className="font-sans text-primary text-sm font-medium">{kw} кВт</span>
               </div>
             ) : (
               <div className="flex flex-wrap gap-2">
                 {kwList.map((k) => (
                   <button key={k}
-                    className="rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2.5 font-sans text-sm text-white hover:border-[#ce0000]/40 hover:bg-[#ce0000]/5 transition-all duration-200 cursor-pointer"
+                    className="rounded-lg border border-theme bg-dim px-4 py-2.5 font-sans text-sm text-primary hover:border-[#ce0000]/40 hover:bg-[#ce0000]/5 transition-all duration-200 cursor-pointer"
                     onClick={() => { reset('kw'); setKw(k) }}>
                     {k} кВт
                   </button>
@@ -301,12 +301,12 @@ export const Calculator = () => {
         {series && rpm != null && kw != null && (
           <Reveal className="mb-8">
             <div className="flex items-center justify-between mb-4">
-              <p className="font-mono text-[10px] text-slate-600 uppercase tracking-widest">
+              <p className="font-mono text-[10px] text-subtle uppercase tracking-widest">
                 Крок 4 — Тип кріплення
               </p>
               {mounting && (
                 <button onClick={() => reset('mounting')}
-                  className="flex items-center gap-1.5 font-mono text-[10px] text-slate-600 hover:text-slate-300 uppercase tracking-widest transition-colors duration-200">
+                  className="flex items-center gap-1.5 font-mono text-[10px] text-subtle hover:text-secondary uppercase tracking-widest transition-colors duration-200">
                   <RotateCcw size={11} /> Змінити
                 </button>
               )}
@@ -314,13 +314,13 @@ export const Calculator = () => {
 
             {mounting ? (
               <div className="inline-flex items-center gap-3 px-4 py-2.5 rounded-xl border border-[#ce0000]/30 bg-[#ce0000]/5">
-                <span className="font-sans text-white text-sm font-medium">{MOUNT_LABEL[mounting] ?? mounting}</span>
+                <span className="font-sans text-primary text-sm font-medium">{MOUNT_LABEL[mounting] ?? mounting}</span>
               </div>
             ) : (
               <div className="flex flex-wrap gap-3">
                 {mountingList.map((m) => (
                   <button key={m} className={btnBase} onClick={() => setMounting(m)}>
-                    <p className="font-sans text-white text-sm font-medium">{MOUNT_LABEL[m] ?? m}</p>
+                    <p className="font-sans text-primary text-sm font-medium">{MOUNT_LABEL[m] ?? m}</p>
                   </button>
                 ))}
               </div>
@@ -336,24 +336,24 @@ export const Calculator = () => {
 
               {results.map((p, i) => (
                 <div key={i} className={`flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 ${
-                  results.length > 1 && i < results.length - 1 ? 'pb-5 mb-5 border-b border-white/8' : ''
+                  results.length > 1 && i < results.length - 1 ? 'pb-5 mb-5 border-b border-theme' : ''
                 }`}>
                   <div>
-                    <p className="font-condensed font-bold text-white text-2xl uppercase tracking-wide mb-1">
+                    <p className="font-condensed font-bold text-primary text-2xl uppercase tracking-wide mb-1">
                       {p.model}
                     </p>
-                    <p className="font-sans text-slate-400 text-sm">
+                    <p className="font-sans text-t-muted text-sm">
                       {p.faza}ф · {p.voltage} · {p.rpm.toLocaleString()} об/хв · {p.kw} кВт · {MOUNT_LABEL[p.mounting] ?? p.mounting}
                     </p>
                   </div>
                   <div className="shrink-0 text-right">
-                    <p className="font-mono text-3xl font-bold text-white">${p.price.toFixed(2)}</p>
-                    <p className="font-mono text-[10px] text-slate-600 uppercase tracking-widest mt-0.5">ціна в USD</p>
+                    <p className="font-mono text-3xl font-bold text-primary">${p.price.toFixed(2)}</p>
+                    <p className="font-mono text-[10px] text-subtle uppercase tracking-widest mt-0.5">ціна в USD</p>
                   </div>
                 </div>
               ))}
 
-              <div className="mt-6 pt-5 border-t border-white/8 flex flex-col sm:flex-row gap-3">
+              <div className="mt-6 pt-5 border-t border-theme flex flex-col sm:flex-row gap-3">
                 <Link
                   to="/#contact"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#ce0000] hover:bg-red-700 text-white font-semibold text-sm rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-[#ce0000]/30"
@@ -363,7 +363,7 @@ export const Calculator = () => {
                 </Link>
                 <button
                   onClick={() => reset('series')}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-white/20 text-white font-semibold text-sm rounded-xl transition-all duration-200"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-dim hover:bg-dim-hover border border-theme hover:border-theme-2 text-primary font-semibold text-sm rounded-xl transition-all duration-200"
                 >
                   <RotateCcw size={14} />
                   Новий підбір
@@ -376,21 +376,21 @@ export const Calculator = () => {
         {/* ── Reference table ── */}
         {series && (
           <Reveal>
-            <div className="rounded-2xl border border-white/8 bg-white/[0.02] overflow-hidden">
-              <div className="px-6 py-4 border-b border-white/8 flex items-center justify-between">
-                <p className="font-mono text-[10px] text-slate-600 uppercase tracking-widest">
+            <div className="rounded-2xl border border-theme bg-card overflow-hidden">
+              <div className="px-6 py-4 border-b border-theme flex items-center justify-between">
+                <p className="font-mono text-[10px] text-subtle uppercase tracking-widest">
                   Всі позиції · {SERIES_INFO[series].label}
                 </p>
-                <p className="font-mono text-[10px] text-slate-700">
+                <p className="font-mono text-[10px] text-faint">
                   {PRODUCTS.filter(p => p.series === series).length} моделей
                 </p>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-white/8">
+                    <tr className="border-b border-theme">
                       {['Модель','Фаз','Напруга','об/хв','кВт','Кріплення','Ціна USD'].map((h) => (
-                        <th key={h} className="text-left px-4 py-3 font-mono text-[10px] text-slate-600 uppercase tracking-widest whitespace-nowrap">
+                        <th key={h} className="text-left px-4 py-3 font-mono text-[10px] text-subtle uppercase tracking-widest whitespace-nowrap">
                           {h}
                         </th>
                       ))}
@@ -402,22 +402,22 @@ export const Calculator = () => {
                       return (
                         <tr
                           key={i}
-                          className={`border-b border-white/[0.04] cursor-pointer transition-colors duration-150 ${
+                          className={`border-b border-faint cursor-pointer transition-colors duration-150 ${
                             isActive
                               ? 'bg-[#ce0000]/8'
-                              : 'hover:bg-white/[0.03]'
+                              : 'hover:bg-dim'
                           }`}
                           onClick={() => { setSeries(p.series); setRpm(p.rpm); setKw(p.kw); setMounting(p.mounting) }}
                         >
-                          <td className={`px-4 py-2.5 font-sans font-medium whitespace-nowrap ${isActive ? 'text-[#ce0000]' : 'text-slate-200'}`}>
+                          <td className={`px-4 py-2.5 font-sans font-medium whitespace-nowrap ${isActive ? 'text-[#ce0000]' : 'text-secondary'}`}>
                             {p.model}
                           </td>
-                          <td className="px-4 py-2.5 font-sans text-slate-400">{p.faza}ф</td>
-                          <td className="px-4 py-2.5 font-sans text-slate-400">{p.voltage}</td>
-                          <td className="px-4 py-2.5 font-sans text-slate-400">{p.rpm.toLocaleString()}</td>
-                          <td className="px-4 py-2.5 font-sans text-slate-300">{p.kw}</td>
-                          <td className="px-4 py-2.5 font-sans text-slate-500 text-xs">{p.mounting}</td>
-                          <td className={`px-4 py-2.5 font-mono font-medium ${isActive ? 'text-[#ce0000]' : 'text-white'}`}>
+                          <td className="px-4 py-2.5 font-sans text-t-muted">{p.faza}ф</td>
+                          <td className="px-4 py-2.5 font-sans text-t-muted">{p.voltage}</td>
+                          <td className="px-4 py-2.5 font-sans text-t-muted">{p.rpm.toLocaleString()}</td>
+                          <td className="px-4 py-2.5 font-sans text-tertiary">{p.kw}</td>
+                          <td className="px-4 py-2.5 font-sans text-subtle text-xs">{p.mounting}</td>
+                          <td className={`px-4 py-2.5 font-mono font-medium ${isActive ? 'text-[#ce0000]' : 'text-primary'}`}>
                             ${p.price.toFixed(2)}
                           </td>
                         </tr>
