@@ -254,7 +254,7 @@ export const CookieBanner = () => {
             }`}
             style={dismissing ? undefined : { animation: 'fadeInUp 0.35s cubic-bezier(0.16,1,0.3,1) both' }}
           >
-            <div className="bg-[#0f0f0f] border border-white/10 rounded-t-3xl sm:rounded-2xl shadow-2xl shadow-black/80 p-6">
+            <div className="bg-white dark:bg-[#0f0f0f] border border-[oklch(90%_0.012_349)] dark:border-white/10 rounded-t-3xl sm:rounded-2xl shadow-2xl shadow-black/80 p-6">
 
               {/* Header */}
               <div className="flex items-center justify-between mb-5">

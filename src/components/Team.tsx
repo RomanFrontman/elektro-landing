@@ -201,7 +201,7 @@ export const Team = () => {
                 onClick={() => goTo(current - 1)}
                 disabled={current === 0}
                 aria-label="Попередній"
-                className="w-10 h-10 rounded-xl border border-white/8 bg-white/[0.02] hover:bg-white/[0.06] hover:border-[#ce0000]/25 flex items-center justify-center text-slate-500 hover:text-white transition-all duration-300 disabled:opacity-25 disabled:cursor-not-allowed"
+                className="w-10 h-10 rounded-xl  border border-white/8 bg-white/[0.02] hover:bg-white/[0.06] hover:border-[#ce0000]/25 flex items-center justify-center text-slate-500 hover:text-white transition-all duration-300 disabled:opacity-25 disabled:cursor-not-allowed"
               >
                 <ChevronLeft size={18} />
               </button>

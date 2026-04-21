@@ -99,7 +99,7 @@ export const Footer = () => {
                 info@elektrozahid.com
               </a>
               <p className="font-mono text-[11px] text-slate-700 pt-1">
-                Пн–Пт: 8:00–18:00 · Сб: 9:00–14:00
+                Пн–Пт: 9:00–17:00 · Обід: 13:00–14:00
               </p>
             </div>
           </div>

@@ -11,7 +11,7 @@
 }
 
 /* ─── Base ─── */
-html {
+html {  
   scroll-behavior: smooth;
   scroll-padding-top: 64px;
   background-color: #000;
@@ -177,7 +177,29 @@ p { margin: 0; }
 /* ═══════════════════════════════════════════════════════════════
    Light mode overrides — applied when html does NOT have .dark
    ═══════════════════════════════════════════════════════════════ */
+:root {
+  --bg-surface: #ffffff;
+  --bg-subtle: #f1f5f9;
 
+  --border-color: rgba(15,23,42,0.12);
+
+  --text-primary: #0f172a;
+  --text-muted: #475569;
+
+  --bg-hover: #f3f4f6;
+}
+
+.dark {
+  --bg-surface: #0f0f0f;
+  --bg-subtle: #080808;
+
+  --border-color: rgba(255,255,255,0.08);
+
+  --text-primary: #ffffff;
+  --text-muted: #64748b;
+
+  --bg-hover: rgba(255,255,255,0.06);
+}
 html:not(.dark) {
   background-color: #f8fafc;
   color-scheme: light;

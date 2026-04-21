@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Menu, X, Sun, Moon } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { useTheme } from '../context/ThemeContext'
 
 const navLinks = [
@@ -21,34 +21,74 @@ const ThemeToggle = () => {
     <button
       onClick={toggle}
       aria-label={isDark ? 'Увімкнути світлу тему' : 'Увімкнути темну тему'}
-      className={`relative flex items-center w-12 h-7 rounded-full shrink-0 border transition-all duration-300 ${
-        isDark
-          ? 'bg-zinc-900 border-[#ce0000]/50'
-          : 'bg-slate-100 border-slate-300'
-      }`}
+      className="shrink-0 focus:outline-none"
+      style={{ width: 30, height: 40 }}
     >
-      {/* Sun — left */}
-      <Sun
-        size={11}
-        className={`absolute left-1.5 transition-all duration-200 ${
-          isDark ? 'text-white/30' : 'text-amber-500'
-        }`}
-      />
-      {/* Moon — right */}
-      <Moon
-        size={11}
-        className={`absolute right-1.5 transition-all duration-200 ${
-          isDark ? 'text-[#ce0000]' : 'text-slate-400/60'
-        }`}
-      />
-      {/* Sliding knob */}
-      <span
-        className={`absolute w-5 h-5 rounded-full shadow-sm transition-all duration-300 ${
-          isDark
-            ? 'translate-x-6 bg-[#ce0000]'
-            : 'translate-x-[2px] bg-white border border-slate-200'
-        }`}
-      />
+      {/* Outer housing — dark charcoal with bevel */}
+      <div
+        className="w-full h-full rounded-[5px] relative"
+        style={{
+          background: 'linear-gradient(160deg, #2e2e2e 0%, #0e0e0e 100%)',
+          boxShadow:
+            '2px 3px 6px rgba(0,0,0,0.85), inset 0 1px 0 rgba(255,255,255,0.07), 0 0 0 1px rgba(0,0,0,0.95)',
+          padding: 3,
+        }}
+      >
+        {/* Inner recess */}
+        <div
+          className="w-full h-full rounded-[2px]"
+          style={{
+            background: '#080808',
+            boxShadow: 'inset 1px 1px 4px rgba(0,0,0,0.9)',
+            padding: 2,
+          }}
+        >
+          {/* Rocker */}
+          <div
+            className="w-full h-full rounded-[1px] relative overflow-hidden"
+            style={{
+              background: isDark
+                ? 'linear-gradient(to bottom, #9a0000 0%, #d40000 40%, #ce0000 100%)'
+                : 'linear-gradient(to bottom, #ce0000 0%, #d40000 60%, #9a0000 100%)',
+              transform: isDark
+                ? 'perspective(70px) rotateX(16deg)'
+                : 'perspective(70px) rotateX(-16deg)',
+              transformOrigin: 'center center',
+              transition: 'transform 0.15s ease, background 0.15s ease',
+              boxShadow: isDark
+                ? 'inset 0 3px 5px rgba(0,0,0,0.5), inset 0 -1px 3px rgba(255,80,80,0.15)'
+                : 'inset 0 -3px 5px rgba(0,0,0,0.5), inset 0 1px 3px rgba(255,80,80,0.15)',
+            }}
+          >
+            {/* O — top (off) */}
+            <span
+              className="absolute left-1/2 -translate-x-1/2 leading-none select-none pointer-events-none"
+              style={{
+                top: '14%',
+                fontSize: 8,
+                fontWeight: 900,
+                color: isDark ? 'rgba(255,255,255,0.45)' : 'rgba(255,255,255,0.9)',
+                fontFamily: 'system-ui, sans-serif',
+              }}
+            >
+              O
+            </span>
+            {/* I — bottom (on) */}
+            <span
+              className="absolute left-1/2 -translate-x-1/2 leading-none select-none pointer-events-none"
+              style={{
+                bottom: '14%',
+                fontSize: 8,
+                fontWeight: 900,
+                color: isDark ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.45)',
+                fontFamily: 'system-ui, sans-serif',
+              }}
+            >
+              I
+            </span>
+          </div>
+        </div>
+      </div>
     </button>
   )
 }
