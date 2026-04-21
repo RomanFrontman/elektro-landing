@@ -1,9 +1,9 @@
 import { Wind, Cable, Zap, Activity, ToggleLeft, ShieldCheck } from 'lucide-react'
 import { Reveal } from './Reveal'
-import fanImg        from '../assets/ventilyator-vc-4-75-25-vr-89-75-vr-88-72-vr-80-75-vr-86-77-037kvt-3000-obkhv.webp'
+import fanImg        from '../assets/ventilyator-vc-4-75-25-vr-89-75-vr-88-72-vr-80-75-vr-86-77-037kvt-3000-obkhv_enhanced.png'
 import converterImg  from '../assets/chastotnic.300x300.png'
 import reducerImg    from '../assets/reduktor_motorreduktor.300x300.png'
-import motorImg      from '../assets/ms-56-3-4-elektrodvigun-b3-012-kvt-1360-obkhv.jpg'
+import motorImg      from '../assets/dv1-300.png'
 
 const showcase = [
   { img: fanImg,       name: 'Промислові вентилятори', sub: 'від 0.37 кВт · 3000 об/хв' },
